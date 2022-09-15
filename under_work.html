@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+    <title>under work</title>
+    <link rel="stylesheet" href="E-tuncss.css">
+    <!-- <link rel="shortcut icon" href="images/icons8-everything-64.png" type="image/x-icon"> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    background: #042104;
+    animation: animate_bg_color 10s linear infinite;
+}
+
+@keyframes animate_bg_color {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.loader {
+    position: relative;
+}
+
+.loader span {
+    position: absolute;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    transform-origin: right;
+    transform: rotate(calc(18deg * var(--i)));
+}
+
+.loader span:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #00ff0a;
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+    animation-delay: calc(-0.1s * var(--i));
+    box-shadow: 0 0 10px #00ff0a, 0 0 20px #00ff0a, 0 0 40px #00ff0a, 0 0 60px #00ff0a, 0 0 80px #00ff0a, 0 0 100px #00ff0a;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(0) scale(0.5);
+    }
+    50% {
+        transform: translate(200px) scale(1);
+    }
+    100% {
+        transform: translate(0) scale(0.5);
+    }
+}
+ 
+    </style>
+</head>
+<body>
+    <div class="top-text">
+        <h1>E-TUN &nbsp <i>E</i>very&nbsp <i>Y</i>ou &nbsp <i>N</i>eed &nbsp</h1>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Services</a></li>
+        </ul>
+      </nav>
+    <!-- <h1>under work .ht</h1> -->
+    <h1>We are working hard pleas if u have any hw,cw,notes,previous year question feel free and contact us at <a href="contact.html">contact</a>&nbsp you will also get mentioned for that</h1>
+    <p>Play audio  beolw and enjoy!!</p>
+   
+    <section>
+        <div class="loader">
+            <span style="--i:1"></span>
+            <span style="--i:2"></span>
+            <span style="--i:3"></span>
+            <span style="--i:4"></span>
+            <span style="--i:5"></span>
+            <span style="--i:6"></span>
+            <span style="--i:7"></span>
+            <span style="--i:8"></span>
+            <span style="--i:9"></span>
+            <span style="--i:10"></span>
+            <span style="--i:11"></span>
+            <span style="--i:12"></span>
+            <span style="--i:13"></span>
+            <span style="--i:14"></span>
+            <span style="--i:15"></span>
+            <span style="--i:16"></span>
+            <span style="--i:17"></span>
+            <span style="--i:18"></span>
+            <span style="--i:19"></span>
+            <span style="--i:20"></span>
+        </div>
+    </section>
+    <audio controls style="border: 10px solid black;width:100vw;background-color: black;border-radius: 0%;height: 100px;">
+        <source src="C:\Users\Dell\Downloads\Chidiya - Vilen.mp3" type="audio/ogg">
+    </audio>
+    <div class="foter">
+        <footer>
+         
+          <a href="index.html">Home</a>
+          <a href="contact.html">contact us</a>
+          <!-- <a href="#">about us</a> -->
+          <a href="#">TOPPER SPEAK'S</a>
+          
+          
+        </footer>
+      </div>
+    <!-- <img src="giphy.gif" alt="......."> -->
+</body>
+</html>
