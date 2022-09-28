@@ -63,6 +63,40 @@
           justify-content: center ;
           
         }
+      #button_lft{
+          float: left;
+          display: block;
+          margin-bottom: 15px;
+          width: 50vw;
+          background-color: black;
+          
+          
+        }
+        #bg_cngrit{
+          background-color: white;
+          color: black;
+          width: 49vw;
+
+
+        }
+        #bg_cnglft{
+          background-color: black;
+          color: white;
+          width: 50vw;
+          
+          
+        }
+        #button_rit{
+          float: right;
+          display: block;
+          margin-bottom: 15px;
+          background-color: white;
+          width: 50vw;
+        }
+        #top_bt{
+          display: inline-flex;
+        }
+       
        
     </style>
   </head>
@@ -107,6 +141,13 @@
     <div class="h_1">
         <h1>Every Thing You Need</h1>
     </div>
+     <div id="top_bt">
+    <div id="button_lft">
+        <button id="bg_cnglft" onclick="bg_cngblk()">black Back</button>     
+    </div>
+    <div id="button_rit">
+      <button id="bg_cngrit" onclick="bg_cngwit()">white Back</button>
+  </div>
     <div class="body_bg">
     <hr>
     <div class="tag_li">
@@ -173,5 +214,17 @@
     <h3>E-TUN</h3>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  </body>
+ <script>
+    function bg_cngblk(){
+    document.getElementById("myDiv").style.backgroundColor = "rgba(15, 14, 14, 0.886)";
+    document.getElementById("tgli").style.color = "white";
+    document.getElementById("ftr").style.backgroundColor ="red";
+    }
+    function bg_cngwit(){
+    document.getElementById("myDiv").style.backgroundColor = "rgb(245, 252, 253)";
+    document.getElementById("tgli").style.color = "black";
+    document.getElementById("ftr").style.backgroundColor = "rgba(15, 14, 14, 0.886)";
+    }
+  </script>
+       </body>
 </html>
