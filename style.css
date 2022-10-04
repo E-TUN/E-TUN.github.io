@@ -315,7 +315,7 @@ font-weight: 700;
 .navbar , body , .BACkgroubd ,.h_1 , footer,.sect ,.card , copyright {
   animation-name: colorChanging;
   animation-duration: 10s;
-  animation-delay: 5s;
+  animation-delay: 5ms;
   animation-timing-function: ease-in;
   animation-iteration-count: infinite;
   animation-direction: normal;
