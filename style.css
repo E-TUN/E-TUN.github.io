@@ -202,6 +202,7 @@ font-weight: 700;
   margin-top: 70px;
   display: flex;
   gap: 30px;
+  box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
 }
 .card{
   height: auto;
@@ -258,9 +259,7 @@ font-weight: 700;
     width: 200px;
   }
 }
-.card:hover{
-  box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
-}
+
 .course{
   margin-top: 10%;
   overflow: hidden;
@@ -312,12 +311,8 @@ font-weight: 700;
     font-family:  "Cormorant Garamond", serif;
   text-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
   }
-  .h_1{
-    display: inline-block;
-    width: 481px;
-  }
 }
-.navbar , body , .BACkgroubd ,.h_1{
+.navbar , body , .BACkgroubd ,.h_1 , footer,.sect{
   animation-name: colorChanging;
   animation-duration: 10s;
   animation-delay: 5s;
