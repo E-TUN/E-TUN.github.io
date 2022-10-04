@@ -339,11 +339,16 @@
   </script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init({offset :200,
-      duration : 1000,
-      delay : 50,
-      easing: 'ease-in-quad',
-    });
+   AOS.init({
+  offset:     120,
+  delay:      0,
+  easing:     'ease',
+  duration:   400,
+  disable:    false, // Condition when AOS should be disabled. e.g. 'mobile'
+  once:       false,
+  mirror:     false, // whether elements should animate out while scrolling past them
+  startEvent: 'DOMContentLoaded'
+});
   </script>
   </body>
 </html>
