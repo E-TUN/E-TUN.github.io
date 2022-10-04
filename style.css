@@ -312,4 +312,39 @@ font-weight: 700;
     font-family:  "Cormorant Garamond", serif;
   text-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
   }
+  .h_1{
+    display: inline-block;
+    width: 481px;
+  }
+}
+.navbar , body , .BACkgroubd ,.h_1{
+  animation-name: colorChanging;
+  animation-duration: 10s;
+  animation-delay: 5s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+@keyframes colorChanging{
+  0%{
+    background-color: #6CD0FF;
+  }
+  20%{
+    background-color: #F2C5FF;
+  }
+  
+  40%{
+    background-color: #4CB8C4;
+  }
+  60%{
+    background-color: #F8CDDA;
+  }
+  
+  80%{
+    background-color: #1FC5A8;
+  }
+  100%{
+    background-color: #1FC5D9;
+  }
+  
 }
