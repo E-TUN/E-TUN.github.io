@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/af33bcb132.js" crossorigin="anonymous"></script>
     <title>BCA Subjects</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
     <!-- Nav -->
@@ -89,7 +90,7 @@
       <div class="heading">
         <h2>Subjects</h2>
       </div>
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);">
+      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);" data-aos="fade-up">
         <img src="images/2_foc.jpeg" class="card-img-top" alt="..." >
         <div class="card-body">
             <h3>Fundamental Of Computer</h3>
@@ -107,7 +108,7 @@
           </div>
       </div>
 
-      <div class="card" style="width: 21rem;  background-color: hsl(165, 22%, 96%);">
+      <div class="card" style="width: 21rem;  background-color: hsl(165, 22%, 96%);" data-aos="fade-down">
         <img src="images/1_evs.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h3>Enviromental Science</h3>
@@ -125,7 +126,7 @@
           </div>
       </div>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);">
+      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);" data-aos="fade-up">
         <img src="images/3_Internet-de-las-cosas.jpg" class="card-img-top" alt="..." height="225px">
         <div class="card-body">
             <h3>Internet Technology</h3>
@@ -143,7 +144,7 @@
           </div>
       </div>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);">
+      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);" data-aos="fade-down">
         <img src="images/4_maths.png" class="card-img-top" alt="..." height="">
         <div class="card-body">
             <h3>Mathematics</h3>
@@ -162,7 +163,7 @@
           </div>
       </div>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);">
+      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);" data-aos="fade-up">
         <img src="images/0_digital bca.jpg" class="card-img-top" alt="..." height="210px">
         <div class="card-body">
             <h3>Digital Electronics</h3>
@@ -180,7 +181,7 @@
           </div>
       </div>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);">
+      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);" data-aos="fade-down">
         <img src="images/OIP2.jpg" class="card-img-top" alt="..." height="210px">
         <div class="card-body">
             <h3>Prgramming With C</h3>
@@ -206,5 +207,14 @@
       </footer>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
+     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset :200,
+      duration : 1000,
+      delay : 50,
+      easing: 'ease-in-quad',
+    });
+  </script>
 </body>
 </html>
