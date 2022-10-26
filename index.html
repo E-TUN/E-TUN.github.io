@@ -12,6 +12,45 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+    .hpdiv
+{
+  background: url(https://i.postimg.cc/3xdyPgw9/s.jpg);
+	position: relative;
+	font-size: 12vw;
+	color: blue;
+	-webkit-text-stroke:0.5vw #383d52;
+	text-transform: uppercase;
+
+}
+.hpdiv::before
+{
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: red;
+	-webkit-text-stroke:0vw #383d52;
+	border-right: 2px black s;
+	overflow: hidden;
+	animation: animate 6s linear infinite;
+ 
+}
+@keyframes animate 
+{
+	0%,100%,100%
+	{
+		width: 0;
+   
+	}
+	90%,100%
+	{
+		width: 100%;
+	}
+}
+    </style>
     <body>
        <!-- Navbar Section  -->
       <nav class="navbar fixed-top  shadow " >
@@ -67,6 +106,9 @@
         <h1 class="h_2">Every Thing You Needed</h1>
       </div>
       <br>
+      <div class="hpdiv">
+      <h2 data-text="Happy Diwali">Happy Diwali</h2>
+        </div>
 
 <!--        <div class="head">
         <h1>Our's Diamonds </h1>
