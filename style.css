@@ -312,3 +312,36 @@ font-weight: 700;
   text-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
   }
 }
+.heading5{
+   padding: 20px 20px;
+}
+.heading5 h5{
+    text-align: center;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+}
+
+.container5{
+    max-width: 100vmax;
+    background-color: whitesmoke;
+    min-height: 80px;
+    margin: 20px;
+    cursor: pointer;
+    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+ .homeworks5{
+   color: black;
+   display: inline-block;
+   position: relative;
+   top: 18px;
+   left:  20px;
+   padding: 10px;
+}
+.homeworks5 a{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
