@@ -1,108 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-Tun login</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-tun login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <style>
-      .top-txt{
-        /* display: flex; */
-        /* align-items: center; */
-        text-align: center;
-      }
-      #frm{
-        margin-top: 70px;
-        border: 1px solid black;
-        padding: 35px;
-        background-color: azure;
-
-      }
-
-      #Directenter{
-        background-color:  #1300d9;
-        color: white;
-        text-align: center;
-        border-radius: 13px;
-        height: 45px;
-        /* width: 50vw; */
-
-      }
-      #Directenter a{
-        
-        text-decoration: none;
-        padding: 10px;
-        color: white;
-      }
-      .Inspect{
-        /* display: flex; */
-        /* text-align: center; */
-        /* align-items: center; */
-        margin-top: 10px;
-        margin-left: 60px;
-        /* margin: 15px; */
-        padding: 5px ;
-        /* width: 75vw; */
-      }
-      #submit{
-        width: 75vw;
-        text-align: center;
-      }
-
-
-    </style>
-  </head>
-  <body>
-    <div class="top-txt">
-    <h1>E-Tun</h1>
-    <br>
-    <h2>Every Thing You Need</h2>
-    </div>
-    <div id="frm">
-    <!-- <h1>Hello, world!</h1> -->
-    <form action="https://formsubmit.co/satyampurohit17@gmail.com" method="POST">
-         <input type="text" name="_honey" style="display: none;">
-        <input type="hidden" name="_captcha" value="false">
-       
-        
+</head>
+<style>
+    *{
+        margin: 0;padding: 0;box-sizing: border-box;
+    }
+    body,html{
+        background-image: url("images/pexels-tirachard-kumtanom-733852.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        backface-visibility: visible;
+    }
+    #signup_div_wrapper{
+        padding: 10px 0px;
+    }
+    @media screen and (max-width : 767px){
+        body{
+           background-position: 70%;
+           background-repeat: repeat-y;
+        }
+    }
+</style>
+<body>
+    <section class="section">
+        <div class="container">
         <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" name="First&nbsp;Name" id="entername"  placeholder="First name" aria-label="First name">
-              
-            </div>
-            
-            <div class="col">
-              <input type="text" class="form-control" name="Last&nbsp;Name" placeholder="Last name" aria-label="Last name">
-            </div>
-          </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="Email" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">To get regular Notification considering entering Your E-mail</div>
-        </div>
-        <div class="mb-3">
-          <label placeholder="BBA/BCA/B.com etc..." class="form-label">Course</label>
-          <input type="text" class="form-control" placeholder="BBA/BCA/B.com etc..." id="exampleInputEmail1" name="Course" aria-describedby="emailHelp">
-          <!-- <div id="emailHelp" class="form-text">To get regular Notification considering entering Your E-mail</div> -->
-        </div>
-        <div class="mb-3">
-          <label for="1,2,3...." class="form-label">Year/Semester</label>
-          <input type="number" class="form-control" placeholder="1,2,3...." id="exampleInputEmail1" name="Year/Semester" aria-describedby="emailHelp">
-          <!-- <div id="emailHelp" class="form-text">To get regular Notification considering entering Your E-mail</div> -->
-        </div>
-       <input type="hidden" name="_next" value="https://e-tun.github.io/home.html"> 
+        <div class="container container--xs">
+        <div class="woocommerce">
+<div id="signup_div_wrapper">
+    <img class="img-fluid mx-auto d-block mb-3" src="https://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/elements/bootstrap-logo.svg" alt="">
+    <h1 class="mb-1 text-center $font-weight-bold: 900">E-TUN</h1>
+    <h3 class="fs-25 text-gray text-center mb-5 pt-3 text-dark" >Every Thing You needed</h3>
+    
+    <form method="post" class="register" action="https://formsubmit.co/ayushchouhan5568@gmail.com">
+        <input type="text" name="_honey" style="display: none;">
+                <input type="hidden" name="_captcha" value="false">
 
-<!--         <input type="hidden" name="_next" value="https://e-tun.github.io/index.html">  -->
-        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      </div>
-      <div class="Inspect">
-        <button id="Directenter">
-          <a href="home.html">Alredy Filled / Inspect what's in </a>
+        		<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
+			<label for="reg_sr_firstname">First Name <span class="required">*</span></label>
+			<input type="text" class="woocommerce-Input woocommerce-Input--text input-text form-control" name="sr_firstname" id="reg_sr_firstname" value="" required="" minlength="5" maxlength="20" placeholder="eg: anshul">
+		<div class="invalid-feedback">This field is required</div></p>
+
+		<p class="woocommerce-FormRow woocommerce-FormRow--last form-row form-row-last">
+			<label for="reg_sr_lastname">Last Name <span class="required">*</span></label>
+			<input type="text" class="woocommerce-Input woocommerce-Input--text input-text form-control" name="sr_lastname" id="reg_sr_lastname" value="" required="" minlength="5" maxlength="20"s placeholder="eg: chouhan">
+		<div class="invalid-feedback">This field is required</div></p>
+		
+        
+        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+            <label for="reg_email">Email address <span class="required">*</span></label>
+            <input type="email" class="woocommerce-Input woocommerce-Input--text input-text form-control" name="email" id="reg_email" value="" required="" placeholder="eg: xyz@gmail.com">
+        <div class="invalid-feedback">This field is required</div></p>
+
+        
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <label for="reg_password">Select Course <span class="required">*</span></label>
+                <!-- <input type="password" class="woocommerce-Input woocommerce-Input--text input-text form-control" name="password" id="reg_password" required=""> -->
+                <select  class="woocommerce-Input woocommerce-Input--text input-text form-control" name="Course"  aria-describedby="emailHelp" id="exampleInputEmail1"" required="">
+                    <option value="">Select your Course...</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="B.COM">B.COM</option>
+                    <option value="BA">BA</option>
+                    <option value="BSC PCM">BSC PCM</option>
+                    <option value="BSC CBZ">BSC CBZ</option>
+                </select>
+            <div class="invalid-feedback">This field is required</div></p>
+
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <label for="reg_password">Select Year <span class="required">*</span></label>
+                <!-- <input type="password" class="woocommerce-Input woocommerce-Input--text input-text form-control" name="password" id="reg_password" required=""> -->
+                <select  class="woocommerce-Input woocommerce-Input--text input-text form-control" name="Year/Semester" aria-describedby="emailHelp" id="exampleInputEmail1" required="">
+                    <option value="">Select your Year...</option>
+                    <option value="1st year">1st Year</option>
+                    <option value="2nd year">2nd Year</option>
+                    <option value="3rd year">3rd Year</option>
+                </select>
+            <div class="invalid-feedback">This field is required</div></p>
+
+        
+        <!-- Spam Trap -->
+        <div style="left: -999em; position: absolute;"><label for="trap">Anti-spam</label><input type="text" name="email_2" id="trap" tabindex="-1" autocomplete="off"></div>
+
+        
+
+
+<!-- <p class="form-row form-row-wide mailchimp-newsletter"><input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="mailchimp_woocommerce_newsletter" type="checkbox" name="mailchimp_woocommerce_newsletter" value="1" checked="checked"> <label for="mailchimp_woocommerce_newsletter" class="woocommerce-form__label woocommerce-form__label-for-checkbox inline"><span>Subscribe for Sales &amp; New Themes</span></label><div class="invalid-feedback">This field is required</div></p><div class="clear"></div><div class="woocommerce-privacy-policy-text"></div> -->
+        <p class="woocomerce-FormRow form-row">
+            <!-- <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="1c6770a71c"><input type="hidden" name="_wp_http_referer" value="/my-account/">           -->
+            <input type="hidden" name="_next" value="https://e-tun.github.io/home.html"> 
+            <input type="submit" class="btn btn-brand btn-block btn-primary mb-4 mt-3" style="margin:0;" name="register" value="Sign Up">
+        <div class="invalid-feedback">This field is required</div></p>
+
+        
+    </form>
+
+   
+    <div class="Inspect ">
+        <button  id="Directenter" class="btn btn-primary">Already Filled / Inspect what's in
+          <a href="home.html"></a>
         </button>
       </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</div>
+</div>
+    </div>
+        </div>
+        </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     
     </script>
-  </body>
+</body>
 </html>
