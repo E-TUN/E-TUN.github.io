@@ -86,7 +86,7 @@ u {
   display: inline-flex;
 }
 .foter footer a:hover {
-  color: red;
+  color: red; 
   text-decoration: underline;
 }
 .navbar {
