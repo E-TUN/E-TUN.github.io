@@ -143,6 +143,9 @@ i {
   line-height: 40px;
   font-family: "Cormorant Garamond", serif;
 }
+.tag_li li::marker{
+  content: ':fire:';
+}
 .carusel {
   display: flex;
   flex-direction: row;
