@@ -143,9 +143,9 @@ i {
   line-height: 40px;
   font-family: "Cormorant Garamond", serif;
 }
-.tag_li li::marker{
+/* .tag_li li::marker{
     content: '🔥';
-}
+} */
 .carusel {
   display: flex;
   flex-direction: row;
