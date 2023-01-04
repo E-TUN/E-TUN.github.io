@@ -144,7 +144,7 @@ i {
   font-family: "Cormorant Garamond", serif;
 }
 .tag_li li::marker{
-  content: ':fire:';
+    content: '🔥';
 }
 .carusel {
   display: flex;
@@ -209,6 +209,7 @@ font-weight: 700;
 }
 .card{
   box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+  cursor: pointer;
 }
 @media (max-width: 600px) {
   .carusel {
