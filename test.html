@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test page</title>
+    <style>
+        *{
+            background-color: azure;
+        }
+        #name{
+            background-color: blueviolet;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p id="name"></p>
+    <p id="demo"></p>
+
+    <script>
+        let value = prompt("Pleas enter your name");
+        let key = "Name"  
+        localStorage.setItem(key, value);
+      //   console.log(`The val at ${key} is ${localStorage.getItem(key)}`);
+        document.getElementById("name").innerHTML = localStorage.getItem(key)
+        //us localStorage.clear()to clear local storage
+        const time = new Date().getHours();
+        let greeting;
+        if (time < 6) 
+        {
+          greeting = "good night";
+        }
+        else if (time < 7)
+        {
+          greeting = "Good morning";
+        } 
+        else if (time < 12 && time < 18)
+        {
+          greeting = "Good afternoon";
+        } 
+        else 
+        {
+          greeting = "Good evening";
+        }
+        document.getElementById("demo").innerHTML = greeting;
+      </script>
+</body>
+</html>
