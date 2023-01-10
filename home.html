@@ -141,7 +141,9 @@
         </button>
       </div>
 	     -->
-	<p id="demo"></p>    
+	  <h3>Hi!</h3>
+	    <br>
+	<h3 id="demo"></h3>    
      <div class="tag_li text-dark fs-5 mt-5" data-aos="fade-up">
   <ul>
      <li>Your Home Work ✅</li>
@@ -401,10 +403,10 @@ if(time < 6 ){
 }
 if (time < 12) {
   greeting = "Good morning";
-} else if (time < 12 && time < 18) {
-  greeting = "Good Afternoon";
+} else if (time > 12 && time < 18) {
+  greeting = "Good Afternoon!";
 } else {
-  greeting = "Good evening";
+  greeting = "Good evening!";
 }
 document.getElementById("demo").innerHTML = greeting;	  
   </script>
