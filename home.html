@@ -398,7 +398,11 @@
 });
 	const time = new Date().getHours();
 let greeting;
-if(time < 6 && time > 20 ){
+if(time > 20)
+{
+	greeting= "If you need me, you know where to find me!"
+}
+if(time < 6){
 	greeting = "Good Night!";
 }
 if (time < 12) {
