@@ -141,7 +141,7 @@
         </button>
       </div>
 	     -->
-	  <h4>Hi! 	
+	  <h4 id="hi_line">Hi! 	
 &#128075;</h4>
 	<h4 id="demo"></h4>    
      <div class="tag_li text-dark fs-5 mt-5" data-aos="fade-up">
@@ -400,7 +400,8 @@
 let greeting;
 if(time > 20)
 {
-	greeting= "If you need me, you know where to find me!"
+	document.getElementById("hi_line").innerHTML = greeting;
+// 	greeting= "“The best way out is always through.” ―Robert Frost"
 }
 if(time < 6){
 	greeting = "Good Night!";
