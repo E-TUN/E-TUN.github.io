@@ -400,13 +400,13 @@
 let greeting;
 if(time > 20)
 {
-	document.getElementById("hi_line").innerHTML = greeting;
-// 	greeting= "“The best way out is always through.” ―Robert Frost"
+// 	document.getElementById("hi_line").innerHTML = greeting;
+	greeting= "“The best way out is always through.” ―Robert Frost"
 }
-if(time < 6){
+else if(time < 6){
 	greeting = "Good Night!";
 }
-if (time < 12) {
+ else if (time < 12) {
   greeting = "Good morning";
 } else if (time > 12 && time < 16) {
   greeting = "Good Afternoon!";
