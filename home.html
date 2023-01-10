@@ -141,6 +141,7 @@
         </button>
       </div>
 	     -->
+	<p id="demo"></p>    
      <div class="tag_li text-dark fs-5 mt-5" data-aos="fade-up">
   <ul>
      <li>Your Home Work ✅</li>
@@ -393,6 +394,19 @@
       delay : 50,
       easing: 'ease-in-quad',
 });
+	const time = new Date().getHours();
+let greeting;
+if(time < 6 ){
+	greeting = "Good Night!";
+}
+if (time < 12) {
+  greeting = "Good morning";
+} else if (time < 12 && time < 18) {
+  greeting = "Good Afternoon";
+} else {
+  greeting = "Good evening";
+}
+document.getElementById("demo").innerHTML = greeting;	  
   </script>
   </body>
 </html>
