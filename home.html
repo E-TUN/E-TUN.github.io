@@ -398,21 +398,17 @@
         });
         const time = new Date().getHours();
         let greeting;
-        if (time > 20) {
+        if (time >= 6 && time < 12) {
             // 	document.getElementById("hi_line").innerHTML = greeting
-            greeting = "“The best way out is always through.” ―Robert Frost"
+            greeting = "Good Morning!"
         }
-        else if (time < 6) {
+        else if (time >= 12 && time < 18) {
             sayhi = "Hi &#127747;"
-            greeting = "Good Night!";
-        }
-        else if (time <= 12) {
-            sayhi = "Hi &#128075;"
-            greeting = "Good morning";
-        }
-        else if (time > 12 && time < 16) {
-            sayhi = "Hi &#128075;"
             greeting = "Good Afternoon!";
+        }
+        else if (time >= 18 && time < 22) {
+            sayhi = "Hi &#128075;"
+            greeting = "Good Evening";
         }
        	else {
 	    sayhi = "Hi &#128075;"
