@@ -406,19 +406,15 @@
             sayhi = "Hi &#127747;"
             greeting = "Good Night!";
         }
-        else if (time < 12) {
+        else if (time <= 12) {
             sayhi = "Hi &#128075;"
             greeting = "Good morning";
         }
-        else if (time > 12) {
+        else if (time > 12 && time < 16) {
             sayhi = "Hi &#128075;"
             greeting = "Good Afternoon!";
         }
-        else if (time > 16) {
-            sayhi = "Hi &#128075;"
-            greeting = "Good evening!";
-        }
-	else {
+       	else {
 	    sayhi = "Hi &#128075;"
 	    greeting ="Always there for your to help";
 	}
