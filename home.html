@@ -410,14 +410,18 @@
             sayhi = "Hi &#128075;"
             greeting = "Good morning";
         }
-        else if (time > 12 && time < 16) {
+        else if (time > 12) {
             sayhi = "Hi &#128075;"
             greeting = "Good Afternoon!";
         }
-        else {
+        else if (time > 16) {
             sayhi = "Hi &#128075;"
             greeting = "Good evening!";
         }
+	else {
+	    sayhi = "Hi &#128075;"
+	    greeting ="Always there for your to help";
+	}
         document.getElementById("hi_line").innerHTML = sayhi;
         document.getElementById("demo").innerHTML = greeting;	  
     </script>
