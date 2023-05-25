@@ -4,19 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test page</title>
+    <title>Document</title>
     <style>
-        *{
-            background-color: azure;
-        }
-        #name{
-            background-color: blueviolet;
-            font-size: 50px;
-        }
-        
-        // new
-         
-               .container {
+        .container {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -49,51 +39,15 @@ button {
   box-shadow: 0px 0px 0px rgba(15, 165, 60, 0.1);
 }
 
-        
     </style>
 </head>
 <body>
-    <p id="name"></p>
-    <p id="demo"></p>
-    <a href ="https://drive.google.com/file/d/10J0ETpAqXmpQwNi2RcUz61PEKojS96uB/view?usp=sharing">DSA</a>
-    
-    // new 
-    
-     <div class="container">
+    <div class="container">
         <p id="tip">Your browser dose not support Web Share API!</p>
         <button id="share">Share My Blog</button>
       </div>
-
-    <script>
-        let value = prompt("Pleas enter your name");
-        let key = "Name"  
-        localStorage.setItem(key, value);
-      //   console.log(`The val at ${key} is ${localStorage.getItem(key)}`);
-        document.getElementById("name").innerHTML = localStorage.getItem(key)
-        //us localStorage.clear()to clear local storage
-        const time = new Date().getHours();
-        let greeting;
-        if (time < 6) 
-        {
-          greeting = "good night";
-        }
-        else if (time < 7)
-        {
-          greeting = "Good morning";
-        } 
-        else if (time < 12 && time < 18)
-        {
-          greeting = "Good afternoon";
-        } 
-        else 
-        {
-          greeting = "Good evening";
-        }
-        document.getElementById("demo").innerHTML = greeting;
-        
-        // new 
-        
-         const share = e => {
+      <script>
+        const share = e => {
   if (navigator.share) {
     navigator
       .share({
