@@ -13,12 +13,56 @@
             background-color: blueviolet;
             font-size: 50px;
         }
+        
+        // new
+         
+               .container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#tip {
+  display: none;
+}
+#tip.show {
+  display: block;
+}
+button {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: 0;
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  padding: 20px 38px;
+  top: 0;
+  font-size: 30px;
+  border-radius: 4px;
+  border-bottom: 1px solid rgba(28, 227, 125, 0.5);
+  background: rgba(22, 230, 137, 1);
+  color: #fff;
+  box-shadow: 0px 0px 0px rgba(15, 165, 60, 0.1);
+}
+
+        
     </style>
 </head>
 <body>
     <p id="name"></p>
     <p id="demo"></p>
     <a href ="https://drive.google.com/file/d/10J0ETpAqXmpQwNi2RcUz61PEKojS96uB/view?usp=sharing">DSA</a>
+    
+    // new 
+    
+     <div class="container">
+        <p id="tip">Your browser dose not support Web Share API!</p>
+        <button id="share">Share My Blog</button>
+      </div>
 
     <script>
         let value = prompt("Pleas enter your name");
@@ -46,6 +90,26 @@
           greeting = "Good evening";
         }
         document.getElementById("demo").innerHTML = greeting;
+        
+        // new 
+        
+         const share = e => {
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "Share my blog",
+        text: "Web development tutorial blogs",
+        url: "https://justforuse.github.io/blog/en-us/"
+      })
+      .then(() => console.log("thanks for share"))
+      .catch(error => console.log("error", error));
+  }
+};
+if(!navigator.share) {
+  document.getElementById('tip').className = 'show'
+}
+document.getElementById("share").addEventListener("click", share);
+
       </script>
 </body>
 </html>
