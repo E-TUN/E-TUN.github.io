@@ -36,6 +36,28 @@
             font-size: large;
         }
        
+.bottomFixButtionComponent{
+  position: sticky;
+  float: right;
+  bottom: 33px;
+  padding-top: 10px;
+  /* background: yellowgreen; */
+  width: 10%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 15px;
+  /* align-items: lef; */
+  /* box-shadow: 0px -4px 3px rgb(27 27 24 / 75%); */
+  }    
+	     #share {
+            border-radius: 50%;
+            height:50px;
+            width: 50px;
+            margin: 5px;
+            padding: 5px;
+            /* content: icon; */
+        }
     </style>
 
 <body>
@@ -135,7 +157,10 @@
     <marquee behavior="scroll" direction="left" id="notice" scrollmount=11 >
 	    <p>WHY WE Our story will reach to you soon....!! new version in new session up to date with new ui, exciting content just for YOU yes YOU  bcs we provide e-tun</p>
     </marquee>
-
+	
+	 <div class="bottomFixButtionComponent"> 
+        <button id="share">Share</button>
+    </div>
 	
     <!-- Card -->
     <div class="conatiner-cart">
@@ -370,7 +395,26 @@
 	    greeting ="Always there for your to help";
 	}
         document.getElementById("hi_line").innerHTML = sayhi;
-        document.getElementById("demo").innerHTML = greeting;	  
+        document.getElementById("demo").innerHTML = greeting;	
+	    
+// 	  share buton        
+         const share = e => {
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "E-TUN",
+        text: "Every Thing You need - pervious year question, important questions , Notes , topper interview + tips, all stusy material easy to access at one place 24*7 in any corner of world!",
+        url: "https://e-tun.github.io/"
+      })
+      .then(() => console.log("thanks for share"))
+      .catch(error => console.log("error", error));
+  }
+};
+if(!navigator.share) {
+  document.getElementById('tip').className = 'show'
+}
+document.getElementById("share").addEventListener("click", share);
+
     </script>
 </body>
 
