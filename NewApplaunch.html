@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything You Need App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+
+        .app-card {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ecf0f1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px; /* Added for a slight border radius */
+        }
+
+        .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 200px; /* Adjust the height based on your needs */
+        }
+
+        .features-section {
+            background-color: #2ecc71;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .features-list {
+            text-align: left;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 10px;
+        }
+
+        .download-button {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Everything You Need App</h1>
+        <img src="C:\Users\Dell\Desktop\icons\icon1.png" alt="App Icon">
+    </header>
+
+    <div class="app-card">
+        <h2>About Us</h2>
+        <p>Your brief description about the app and the developer.</p>
+
+        <h2>Developers</h2>
+        <div class="developer-grid">
+            <!-- Developer 1 -->
+            <div class="developer">
+                <img src = "images/satyam_me.jpg" alt="Developer 1" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Satyam Purohit</p>
+                <p><strong>Position:</strong> Lead Developer</p>
+            </div>
+
+            <!-- Developer 2 -->
+            <div class="developer">
+                <img src = "images/FB_IMG_1652717773573.jpg" alt="Developer 2" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Aarmender Singh</p>
+                <p><strong>Position:</strong> Tester</p>
+            </div>
+
+            <!-- Developer 3 -->
+            <div class="developer">
+                <img src = "images/manas.jpg" alt="Developer 3" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Manas parihar</p>
+                <p><strong>Position:</strong> Content Provider</p>
+            </div>
+
+             <!-- Developer 4 -->
+             <div class="developer">
+                <img src = "images/l-f-try.jpg" alt="Developer 1" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong>Pragya Goyal</p>
+                <p><strong>Position:</strong>Content Provider</p>
+            </div>
+
+            <!-- Developer 1 -->
+            <div class="developer">
+                <img src = "images/lalit.jpg" alt="Developer 1" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong>Lalit Goyal</p>
+                <p><strong>Position:</strong>Lead Web Developer</p>
+            </div>
+
+            <!-- Developer 2 -->
+            <div class="developer">
+                <img src = "images/samusa.jpg" alt="Developer 2" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Saumay Gajja </p>
+                <p><strong>Position:</strong> Tester</p>
+            </div>
+
+            <!-- Developer 3 -->
+            <div class="developer">
+                <img src = "images/jagal.jpg" alt="Developer 3" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Jugal Kishore</p>
+                <p><strong>Position:</strong> Tester</p>
+            </div>
+
+            <div class="developer">
+                <img src = "images/dev.jpg" alt="Developer 3" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Dev</p>
+                <p><strong>Position:</strong> Tester</p>
+            </div>
+
+            <div class="developer">
+                <img src = "images/arihant.jpg" alt="Developer 3" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Arihant Gloecha</p>
+                <p><strong>Position:</strong> Tester</p>
+            </div>
+
+            <div class="developer">
+                <img src = "images/navneet.jpg" alt="Developer 3" style="width: 200px; height: 200px; object-fit: cover;">
+                <p><strong>Name:</strong> Navneet</p>
+                <p><strong>Position:</strong> Tester</p>
+            </div>
+            
+        </div>
+
+        <h2>Product Video</h2>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen style="pointer-events: none;"></iframe>
+
+        <div class="features-section">
+            <h2>Features</h2>
+            <ul class="features-list">
+                <li>PyQ, Notes, Solved PyQ, Assignments, Important Questions, etc. - [Add more details]</li>
+                <li>Skill Section - "Fuel your growth with a diverse set of skills. Your learning journey never stops with us."</li>
+                <li>XO Game - "Never get bored with our interactive XO game."</li>
+                <li>Clean and Easy-to-Use Interface - "Experience simplicity in every interaction with our app."</li>
+            </ul>
+        </div>
+
+        <a class="download-button" href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Download Now</a>
+    </div>
+
+    <footer>
+        &copy; 2023 Everything You Need App. All rights reserved.
+    </footer>
+
+</body>
+</html>
