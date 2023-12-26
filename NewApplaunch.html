@@ -21,6 +21,12 @@
             background-color: #f8f8f8;
             color: #333;
             text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #ecf0f1;
         }
 
         header {
@@ -37,6 +43,12 @@
             background-color: #ecf0f1;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .app-card.dark-mode {
+            background-color: #2c3e50;
+            color: #ecf0f1;
         }
 
         img {
@@ -75,6 +87,7 @@
             background-color: #3498db;
             color: #ecf0f1;
             padding: 10px;
+            transition: background-color 0.3s ease;
         }
 
         .download-button {
@@ -92,7 +105,28 @@
         .download-button:hover {
             background-color: #27ae60;
         }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            color: #2c3e50;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 10px; /* Adjust the margin based on your design */
+        }
+
+        .toggle-dark-mode:hover {
+            text-decoration: underline;
+        }
     </style>
+    <script>
+        function toggleDarkMode() {
+            const body = document.querySelector('body');
+            const appCard = document.querySelector('.app-card');
+            body.classList.toggle('dark-mode');
+            appCard.classList.toggle('dark-mode');
+        }
+    </script>
 </head>
 <body>
 
@@ -104,13 +138,13 @@
     <div class="app-card">
         <h2>About Us</h2>
         <p style="font-size: 16px; line-height: 1.5; margin-bottom: 15px;">
-    In the late '<span style="background-color: #ffff00;">90s</span>, accessing study materials, previous year questions, and notes <span style="background-color: #ffff00;">24*7</span> was challenging. Today, technology has made it all accessible 
-            on your phone. Your journey of growth, self-help, and <span style="background-color: #ffff00;">achivements</span> never has to pause.
+    In the late '<span style="background-color: #FF1493;">90s</span>, accessing study materials, previous year questions, and notes <span style="background-color: #FF1493;">24*7</span> was challenging. Today, technology has made it all accessible 
+            on your phone. Your journey of growth, self-help, and <span style="background-color: #FF1493;">achivements</span> never has to pause.
 </p>
 
 <p style="font-size: 16px; line-height: 1.5; margin-bottom: 15px;">
     What are you waiting for? Even if your institution isn't listed, you can still explore our unique selling product (USP) –
-    the <span style="background-color: #ffff00;">Skill section</span>. Discover links to top-notch content, equipping you with the skills to thrive in the modern world and outshine the competition.
+    the <span style="background-color: #FF1493;">Skill section</span>. Discover links to top-notch content, equipping you with the skills to thrive in the modern world and outshine the competition.
 </p>
 
 <p style="font-size: 16px; line-height: 1.5; margin-bottom: 15px;">
@@ -120,6 +154,8 @@
 
 
         <h2>Developers</h2>
+        <button class="toggle-dark-mode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
         <div class="developer-grid">
             <!-- Developer 1 -->
             <div class="developer">
@@ -206,6 +242,7 @@
             
         </div>
 
+        
         <h2>Product Video</h2>
         <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen style="pointer-events: none;"></iframe>
 
@@ -223,7 +260,7 @@
     </div>
 
     <footer>
-        &copy; 2023 <a href = "home.html"> Everything You Need </a> App. All rights reserved.
+        &copy; 2023 <a href = "home.html"  style="font-weight: bold; color: #fcfbfb; text-decoration: underline;"> Everything You Need </a> App. All rights reserved.
     </footer>
 
 </body>
