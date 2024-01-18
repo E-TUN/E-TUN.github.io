@@ -45,56 +45,46 @@
 
 	    //new 
 
-	    $green: #2ecc71;
-$red: #e74c3c;
-$blue: #3498db;
-$yellow: #f1c40f;
-$purple: #8e44ad;
-$turquoise: #1abc9c;
-
-// Reset and Layout Styles
-
-	    .btn {
-  box-sizing: border-box;
-  appearance: none;
-  background-color: transparent;
-  border: 2px solid $red;
-  border-radius: 0.6em;
-  color: $red;
-  cursor: pointer;
-  display: flex;
-  align-self: center;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  margin: 20px;
-  padding: 1.2em 2.8em;
-  text-decoration: none;
+	    .frame {
+  width: 90%;
+  margin: 40px auto;
   text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-
-  &:hover,
-  &:focus {
-    color: #fff;
-    outline: 0;
-  }
 }
-
-	    //BUTTON 3
-.third {
-  border-color: $blue;
+button {
+  margin: 20px;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
   color: #fff;
-  box-shadow: 0 0 40px 40px $blue inset, 0 0 0 0 $blue;
-  transition: all 150ms ease-in-out;
-  
-  &:hover {
-    box-shadow: 0 0 10px 0 $blue inset, 0 0 10px 4px $blue;
-  }
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 1 */
+.btn-1 {
+  background: rgb(6,14,131);
+  background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+  border: none;
+}
+.btn-1:hover {
+   background: rgb(0,3,255);
+background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
 }
 
 
+	
     </style>
 </head>
 <body>
@@ -106,8 +96,9 @@ Update test.html
     <a href = "privacy_polecy.html">Policy</a>
     <a href = "NewApplaunch.html">Policy</a>
 
-    button.btn.third Button 3
-
+   <div class="frame">
+  <button class="custom-btn btn-1">Read More</button>
+   </div>
 
 
     
@@ -118,12 +109,12 @@ Update test.html
     </div>
 
     <script>
-        let value = prompt("Pleas enter your name");
-        let key = "Name"  
-        localStorage.setItem(key, value);
-      //   console.log(`The val at ${key} is ${localStorage.getItem(key)}`);
-        document.getElementById("name").innerHTML = localStorage.getItem(key)
-        //us localStorage.clear()to clear local storage
+      //   let value = prompt("Pleas enter your name");
+      //   let key = "Name"  
+      //   localStorage.setItem(key, value);
+      // //   console.log(`The val at ${key} is ${localStorage.getItem(key)}`);
+      //   document.getElementById("name").innerHTML = localStorage.getItem(key)
+      //   //us localStorage.clear()to clear local storage
         const time = new Date().getHours();
         let greeting;
         if (time < 6) 
