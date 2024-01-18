@@ -43,45 +43,58 @@
         }
        
 
-        .flex {
- display: flex;
- align-items: center;
- justify-content: center;
-}
+	    //new 
 
-.app {
- &-btn {
-  width: 45%;
-  max-width: 160px;
-  color: #fff;
-  margin: 20px 10px;
-  text-align: left;
-  border-radius: 5px;
+	    $green: #2ecc71;
+$red: #e74c3c;
+$blue: #3498db;
+$yellow: #f1c40f;
+$purple: #8e44ad;
+$turquoise: #1abc9c;
+
+// Reset and Layout Styles
+
+	    .btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid $red;
+  border-radius: 0.6em;
+  color: $red;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
   text-decoration: none;
-  font-family: "Lucida Grande", sans-serif;
-  font-size: 10px;
+  text-align: center;
   text-transform: uppercase;
-  &.blu {
-   background-color: #101010;
-   transition: background-color 0.25s linear;
-   &:hover {
-    background-color: #454545;
-   }
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    outline: 0;
   }
-  i {
-   width: 20%;
-   text-align: center;
-   font-size: 28px;
-   margin-right: 7px;
-  }
-  .big-txt {
-   font-size: 17px;
-   text-transform: capitalize;
-  }
- }
 }
 
-        
+	    //BUTTON 3
+.third {
+  border-color: $blue;
+  color: #fff;
+  box-shadow: 0 0 40px 40px $blue inset, 0 0 0 0 $blue;
+  transition: all 150ms ease-in-out;
+  
+  &:hover {
+    box-shadow: 0 0 10px 0 $blue inset, 0 0 10px 4px $blue;
+  }
+}
+
+
     </style>
 </head>
 <body>
@@ -93,22 +106,8 @@ Update test.html
     <a href = "privacy_polecy.html">Policy</a>
     <a href = "NewApplaunch.html">Policy</a>
 
-    <div class="flex social-btns">
-  <a class="app-btn blu flex vert" href="http:apple.com">
-    <i class="fab fa-apple"></i>
-    <p>Available on the <br/> <span class="big-txt">App Store</span></p>
-  </a>
+    button.btn.third Button 3
 
-  <a class="app-btn blu flex vert" href="http:google.com">
-    <i class="fab fa-google-play"></i>
-    <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
-  </a>
-	
-	<a class="app-btn blu flex vert" href="http:alphorm.com">
-    <i class="fas fa-desktop"></i>
-    <p>Application <br/> <span class="big-txt">Desktop</span></p>
-  </a>
-</div>
 
 
     
