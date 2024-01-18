@@ -43,6 +43,44 @@
         }
        
 
+        .flex {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.app {
+ &-btn {
+  width: 45%;
+  max-width: 160px;
+  color: #fff;
+  margin: 20px 10px;
+  text-align: left;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Lucida Grande", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  &.blu {
+   background-color: #101010;
+   transition: background-color 0.25s linear;
+   &:hover {
+    background-color: #454545;
+   }
+  }
+  i {
+   width: 20%;
+   text-align: center;
+   font-size: 28px;
+   margin-right: 7px;
+  }
+  .big-txt {
+   font-size: 17px;
+   text-transform: capitalize;
+  }
+ }
+}
+
         
     </style>
 </head>
@@ -54,6 +92,11 @@ Update test.html
     <a href ="https://drive.google.com/file/d/10J0ETpAqXmpQwNi2RcUz61PEKojS96uB/view?usp=sharing">DSA</a>
     <a href = "privacy_polecy.html">Policy</a>
     <a href = "NewApplaunch.html">Policy</a>
+
+    <a class="app-btn blu flex vert" href="http:google.com">
+    <i class="fab fa-google-play"></i>
+    <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
+  </a>
     
 <!--     //new  -->
      <div id="full">this is full</div>
