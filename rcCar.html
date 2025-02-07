@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP8266 RC Car Control</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:active {
+      background-color: #0056b3;
+    }
+    .stop {
+      background-color: #dc3545;
+    }
+    .stop:active {
+      background-color: #a71d2a;
+    }
+    #slider {
+      margin: 20px 0;
+      width: 80%;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .direction-controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .direction-controls.vertical {
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <h1>ESP8266 RC Car Control</h1>
+  <div class="container">
+    <div class="direction-controls">
+      <button onclick="sendCommand('forward/on')">Forward</button>
+      <button class="stop" onclick="sendCommand('stop')">Stop</button>
+      <button onclick="sendCommand('back/on')">Back</button>
+    </div>
+    <div class="direction-controls">
+      <button onclick="sendCommand('left/on')">Left</button>
+      <button onclick="sendCommand('right/on')">Right</button>
+    </div>
+    <div>
+      <label for="slider">Speed Control</label><br>
+      <input type="range" id="slider" min="0" max="255" value="128" oninput="setSpeed(this.value)">
+    </div>
+  </div>
+
+  <script>
+    function sendCommand(command) {
+      fetch('/' + command)
+        .then(response => console.log('Command sent:', command))
+        .catch(error => console.error('Error:', error));
+    }
+
+    function setSpeed(speed) {
+      fetch('/speed/' + speed)
+        .then(response => console.log('Speed set to:', speed))
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
+</body>
+</html>

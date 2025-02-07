@@ -1,0 +1,106 @@
+Python 
+
+-- has vast lib -- data visualization 
+-- interpretd based language -- run without compilation  -- line by line check -- if one line wrong out of 10 then 9 line will run 
+
+
+to get var address print(id(var)) 
+
+special data type 
+list 
+tuple
+set
+dictionary
+
+# -- for comment 
+
+
+#List[], mutable, order call,
+
+list = [12,45,"Hi, 56.5, True]
+print(list)
+
+list.append(DATA)
+list.pop()
+list[3:5] --5 exclude, 3 include -- called slicing 
+print elements from last list[-1,-2] etc
+reverse our list list[::-1] reverse our list
+
+
+#tuple()  immutable, order collection 
+
+tuple = (23,true, 90.0)
+tuple.append() --error
+tuple[2:4] -- get 2,3
+
+
+--- 29/1/25--
+
+#set
+set = {12,12,34,56} -- can also use diff data type 
+same like maths -- used only when used in unique data type like phone number 
+mutable 
+unique value
+no slicing
+
+set1.add(data)
+set1.remove(data to remove)
+
+
+#set intersection 
+a = {1,2,3}
+b = {4,1,2}
+
+print(a.intersection(b))
+1,2
+a.union()
+a.difference(b) a-b
+
+
+to convert a data type to another 
+
+list = [1,2,3,4]
+list1 = set(list)
+
+
+a = 12
+b = float(a)
+12.0
+
+#dictionary -- key value 
+
+name(ley) :- shree_Ram, sp(value)
+mutable, 
+slicing available 
+
+dict = {'name': 'Satyam', 'marks': [45,78,86] }
+
+print(dict.values()) -- just print values
+
+print(dict.keys()) -- just print keys
+
+dict.pop('marks') -- removes marks from dict
+dict.update({'no': 98})
+
+
+
+#string functions
+
+str = "hello how are you"
+str.title(
+str.lower()
+str.count('h') - 2
+print(str.len()) -- include space
+print(str.isalpha()) -- true if only character, no space also available    
+print(str.isdigit()) -- true if only dight
+str1.endswith('7') -- true- if present 
+
+
+if condition :
+	// code to execute 
+elif condition:
+	// CODE TO EXECUTE
+else :
+	// code to execute 
+
+

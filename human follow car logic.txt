@@ -1,0 +1,12 @@
+human follow car logic 
+
+dis > 150 && dis < 300 -- follow, if else , dis > 300, dis < 305 -- nodHead -- speed less 
+else -- stop -- nodHead as distance is less then 150 
+
+dis > 150 && dis < 300 -- follow, -- forward
+
+nodHead() -- move servo 0 to 180, 180 to 0 -- in btwn if found an object in btwn motion move according
+
+eg servo moving and found object when its at btwn 70 to  90 degreen i.e move right a bit then forward,
+
+found object logic object btwn 150 - 300 cm distance 
