@@ -1,162 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test page</title>
-    <style>
-        *{
-            background-color: azure;
-        }
-        #name{
-            background-color: blueviolet;
-            font-size: 50px;
-        }
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCA 2nd Sem - E-Tun</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
- .bottomFixButtionComponent{
-  position: sticky;
-  float: right;
-  bottom: 33px;
-  padding-top: 10px;
-  /* background: yellowgreen; */
-  width: 10%;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  margin-right: 15px;
-  /* align-items: lef; */
-  /* box-shadow: 0px -4px 3px rgb(27 27 24 / 75%); */
-  }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
 
-   #full{
-            height: 120vh;
-        }
+    .navbar {
+      background-color: #2c3e50;
+    }
 
-        #share {
-            border-radius: 50%;
-            height:50px;
-            width: 50px;
-            margin: 5px;
-            padding: 5px;
-            /* content: icon; */
-        }
-       
+    .navbar .nav-link {
+      color: #ecf0f1;
+    }
 
-	    //new 
+    .navbar .nav-link:hover {
+      color: #18bc9c;
+    }
 
-	    .frame {
-  width: 90%;
-  margin: 40px auto;
-  text-align: center;
-}
-button {
-  margin: 20px;
-}
-.custom-btn {
-  width: 130px;
-  height: 40px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  outline: none;
-}
+    .heading {
+      text-align: center;
+      margin: 100px 0 30px;
+    }
 
-/* 1 */
-.btn-1 {
-  background: rgb(6,14,131);
-  background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
-  border: none;
-}
-.btn-1:hover {
-   background: rgb(0,3,255);
-background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
-}
+    .heading h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
 
+    .card {
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: none;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
 
-	
-    </style>
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .card-body h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .dropdown-menu {
+      border-radius: 10px;
+    }
+
+    footer {
+      margin-top: 50px;
+      background-color: #2c3e50;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <p id="name"></p>
-    <p id="demo"></p>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">
+        <img src="images/12.jpeg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top" />
+        E-Tun
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="course.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="toppers.html">Toppers</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-Update test.html
-    <a href ="https://drive.google.com/file/d/10J0ETpAqXmpQwNi2RcUz61PEKojS96uB/view?usp=sharing">DSA</a>
-    <a href = "privacy_polecy.html">Policy</a>
-    <a href = "NewApplaunch.html">Policy</a>
-    <a href = "intruptionFreeStudy.html">intruptionFreeStudyAppLink</a>
+  <section class="heading">
+    <h2>Subjects - MCA 2nd Sem</h2>
+    <hr class="w-25 mx-auto">
+  </section>
 
-   <div class="frame">
-  <button class="custom-btn btn-1">Read More</button>
-   </div>
-
-
-    
-<!--     //new  -->
-     <div id="full">this is full</div>
-    <div class="bottomFixButtionComponent"> 
-        <button id="share">Share</button>
+  <section class="container d-flex flex-wrap justify-content-center">
+    <!-- Sample Card -->
+    <div class="card" style="width: 21rem;" data-aos="fade-up">
+      <img src="images/pexels-tirachard-kumtanom-733852.jpg" class="card-img-top" alt="Python">
+      <div class="card-body">
+        <h3>Python</h3>
+        <p class="card-text">A beginner-friendly interpreted language widely used for various tasks from automation to AI.</p>
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            What You Want to Get!
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Previous Year Papers</a></li>
+            <li><a class="dropdown-item" href="https://youtube.com/playlist?list=PLsylUObW5M3CAGT6OdubyH6FztKfJCcFB">NPTEL Playlist</a></li>
+            <li><a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Skill Section on App</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <script>
-      //   let value = prompt("Pleas enter your name");
-      //   let key = "Name"  
-      //   localStorage.setItem(key, value);
-      // //   console.log(`The val at ${key} is ${localStorage.getItem(key)}`);
-      //   document.getElementById("name").innerHTML = localStorage.getItem(key)
-      //   //us localStorage.clear()to clear local storage
-        const time = new Date().getHours();
-        let greeting;
-        if (time < 6) 
-        {
-          greeting = "good night";
-        }
-        else if (time < 7)
-        {
-          greeting = "Good morning";
-        } 
-        else if (time < 12 && time < 18)
-        {
-          greeting = "Good afternoon";
-        } 
-        else 
-        {
-          greeting = "Good evening";
-        }
-        document.getElementById("demo").innerHTML = greeting;
+    <!-- Duplicate and customize the above card for other subjects like OS, Java, Full Stack, etc. -->
+  </section>
 
-        
-        //new 
-        
-         const share = e => {
-  if (navigator.share) {
-    navigator
-      .share({
-        title: "E-TUN",
-        text: "Every Thing You need - pervious year question, important questions , Notes , topper interview + tips, all stusy material easy to access at one place 24*7 in any corner of world!",
-        url: "https://e-tun.github.io/"
-      })
-      .then(() => console.log("thanks for share"))
-      .catch(error => console.log("error", error));
-  }
-};
-if(!navigator.share) {
-  document.getElementById('tip').className = 'show'
-}
-document.getElementById("share").addEventListener("click", share);
+  <footer class="text-center p-3">
+    <p class="mb-0">&copy; 2022 <a class="text-white fw-bold" href="home.html">E-Tun</a></p>
+  </footer>
 
-
-      </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 200,
+      duration: 1000,
+      easing: 'ease-in-out',
+    });
+  </script>
 </body>
 </html>
