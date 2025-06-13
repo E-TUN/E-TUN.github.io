@@ -1,306 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7QFD929EKF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QFD929EKF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7QFD929EKF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCA 2nd Sem - E-Tun</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
 
-  gtag('config', 'G-7QFD929EKF');
-</script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/af33bcb132.js" crossorigin="anonymous"></script>
-    <title>MCA 2SEM BTU</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-	<style>
-	.center-container {
-        	text-align: center;
-    	}
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #dee2e6;
+    }
 
-	.download-button {
-	        display: inline-block;
-	        margin-top: 10px; 
-	        background-color: #2ecc71;
-	        color: #ecf0f1;
-	        padding: 10px 20px;
-	        border-radius: 5px;
-	        text-decoration: none;
-	        font-weight: bold;
-	        margin-top: 20px;
-	        transition: background-color 0.3s ease;
-     	}
+    .navbar-brand img {
+      border-radius: 50%;
+    }
 
-        .download-button:hover {
-            background-color: #27ae60;
-        } 
+    header {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: white;
+    }
 
-	</style>
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .subjects {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .subject-box {
+      background-color: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .subject-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .subject-box h3 {
+      font-weight: 600;
+    }
+
+    .subject-box p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .actions a {
+      display: inline-block;
+      margin: 0.5rem 0.5rem 0 0;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      text-decoration: none;
+      background-color: #0ea5e9;
+      color: white;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s;
+    }
+
+    .actions a:hover {
+      background-color: #0284c7;
+    }
+
+    .drive-icon {
+      width: 16px;
+      height: 16px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    footer {
+      background-color: #f1f5f9;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <!-- Nav -->
-       <!-- Navbar Section  -->
-       
-       <div class="h_1 " id="he" >
-        <h1 class="h_2">Every Thing You Need</h1>
-      </div>
-      <br>
 
-       <nav class="navbar fixed-top shadow">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="home.html">
-            <img
-              src="images/12.jpeg"
-              alt=""
-              width="45"
-              height="40"
-              class="d-inline-block align-text-top"
-            />
-            E-Tun
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasDarkNavbar"
-            aria-controls="offcanvasDarkNavbar"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
-            id="offcanvasDarkNavbar"
-            aria-labelledby="offcanvasDarkNavbarLabel"
-          >
-            <div class="offcanvas-header">
-              <h3 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menus</h3>
-              <button
-                type="button"
-                class="btn-close btn-close-white"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="offcanvas-body height">
-              <ul class="navbar-nav justify-content-end flex-grow-1">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="home.html"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">About Us</a>
-                </li>
-                <li class="nav-item ">
-                  <a
-                    class="nav-link active"
-                    href="course.html">
-                    Course's
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link " href="toppers.html">
-                    Topper's
-                  </a>
-                </li>
-                  
-		      <li class="nav-item ">
-		<button>		
-                  <a class="nav-link " href="bca2.html">
-                  <<-Back
-		  </a></button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div class="heading">
-        <h2>Subjects</h2>
-	      <hr>
- <!--  <h2>Download old yer Question paper <a href="BCA-2YR-(PYQ).zip">Here</a>&nbsp;18MB</h2>
--->
+  <nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="images/12.jpeg" alt="Logo" width="40" height="40">
+        <span class="ms-2 fw-bold">E-Tun</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about_us.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
       </div>
-<!--     <div class="center-container">
-    	<marquee behavior="scroll" direction="left" id="notice" scrollmount=14 >
- 		<h4>New And Gratest content on App &#127881; includes practical/viva questions, skill section</h4>
-    	</marquee>
-        <a href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1" style="text-decoration: none;"></a>
-   </div> -->
+    </div>
+  </nav>
 
-	<div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);"  data-aos="fade-up">
-        <img src="images/pexels-tirachard-kumtanom-733852.jpg" class="card-img-top" alt="..." height="200px">
-        <div class="card-body">
-            <h3>Python</h3>
-          <p class="card-text">Interpreted language which is easy to learn and use, can do a wide range of task</p>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-             What You Want Get !
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Previous Year Question Paper</a></li>
-              <!-- <li><a class="dropdown-item" href="https://drive.google.com/file/d/1y8YpLQCWPlm2foAahXsx8YKE3CgXnaFU/view?usp=sharing">Important Question</a></li> -->
-              <li><a class="dropdown-item" href="https://youtube.com/playlist?list=PLsylUObW5M3CAGT6OdubyH6FztKfJCcFB">NPTEL OS Incr. Knowledge</a></li>
-              <!-- <li><a class="dropdown-item  " href="https://drive.google.com/file/d/1T3CGRFFA9xYjqBwsySZP7ZaHeCifvMjy/view?usp=sharing">Homeworks <span class="badge animate bg-danger">New</span></a> -->
-              <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Gratest content - on app<span class="badge animate bg-danger">New</span></a> -->
-          
-            </li>
-		    <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Relevent Skills (Skill Section -ON E TUN App)<span class="badge animate bg-danger">New</span></a>
-            
-            </ul>
-          </div>
-      </div>
+  <header>
+    <h1>Everything You Need - MCA 2nd Semester</h1>
+    <p class="mt-2">Quickly access PYQs, learning resources & skills for your semester subjects</p>
+  </header>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);"  data-aos="fade-up">
-        <img src="images/pexels-tirachard-kumtanom-733852.jpg" class="card-img-top" alt="..." height="200px">
-        <div class="card-body">
-            <h3>Operating System</h3>
-          <p class="card-text">The OS helps you to communicate with the computer without knowing how to speak the computer's language. It is not possible for the user to use any computer or mobile device without having an operating system.</p>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-             What You Want Get !
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Previous Year Question Paper</a></li>
-              <!-- <li><a class="dropdown-item" href="https://drive.google.com/file/d/1y8YpLQCWPlm2foAahXsx8YKE3CgXnaFU/view?usp=sharing">Important Question</a></li> -->
-              <li><a class="dropdown-item" href="https://youtube.com/playlist?list=PLsylUObW5M3CAGT6OdubyH6FztKfJCcFB">NPTEL OS Incr. Knowledge</a></li>
-              <!-- <li><a class="dropdown-item  " href="https://drive.google.com/file/d/1T3CGRFFA9xYjqBwsySZP7ZaHeCifvMjy/view?usp=sharing">Homeworks <span class="badge animate bg-danger">New</span></a> -->
-              <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Gratest content - on app<span class="badge animate bg-danger">New</span></a> -->
-          
-            </li>
-		    <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Relevent Skills (Skill Section -ON E TUN App)<span class="badge animate bg-danger">New</span></a>
-            
-            </ul>
-          </div>
+  <section class="subjects">
+    <div class="subject-box">
+      <h3>Python</h3>
+      <p>Easy to learn and powerful interpreted programming language with wide application.</p>
+      <div class="actions">
+         <a href="https://drive.google.com/drive/folders/1-Ajkqns03fQ-DdOqYtWoHeytL9R3QmGP?usp=sharing">PYQs
+         <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+        </a>
+        <a href="https://youtu.be/vLqTf2b6GZw?si=9AXgv88uEoFlKFvg">YouTube Playlist</a>
+        <a href="#">Skill Content (App)</a>
       </div>
+    </div>
 
-      <div class="card" style="width: 21rem;  background-color: hsl(165, 22%, 96%);"  data-aos="fade-down">
-        <img src="images/pexels-tirachard-kumtanom-733852.jpg" class="card-img-top" alt="..." height="200px">
-        <div class="card-body">
-            <h3>Full Stack Web-development</h3>
-          <p class="card-text">Create next big thing with Full Stack Web development</p>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                What You Want Get !
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Previous Year Question Paper</a></li>
-              <!-- <li><a class="dropdown-item" href="https://drive.google.com/file/d/1y8YpLQCWPlm2foAahXsx8YKE3CgXnaFU/view?usp=sharing">Important Question</a></li> -->
-              <!-- <li><a class="dropdown-item" href="https://youtube.com/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi">DSA Made Easy</a></li> -->
-             <!-- <li><a class="dropdown-item  " href="hw.html">Homeworks   <span class="badge animate bg-danger">New</span></a> -->
-	      <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Our App<span class="badge animate bg-danger">New</span></a>
-          <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Skill Section -ON E TUN App<span class="badge animate bg-danger">New</span></a> -->
-            
-	     </li>
-            </ul>
-          </div>
+    <div class="subject-box">
+      <h3>Operating System</h3>
+      <p>Foundational software that manages hardware and enables user interaction with a system.</p>
+      <div class="actions">
+        <a href="https://drive.google.com/file/d/1y3iIJErW-eTPRkUDYh0LSPGuUrmCGjY6/view?usp=sharing">
+          PYQs 22-23
+          <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+        </a>
+        <a href="https://drive.google.com/file/d/144QWNnkJGu5F_i-wnXIrQ2k5nYrQz4yt/view?usp=sharing">
+          PYQs 23-24
+          <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+        </a>
+        <a href="https://youtu.be/z3Nw5o9dS7Q?si=sbxO-fVtyr4ev2AU">NPTEL Link</a>
       </div>
+    </div>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);"  data-aos="fade-up">
-        <img src="images/pexels-tirachard-kumtanom-733852.jpg" class="card-img-top" alt="..." height="200px">
-        <div class="card-body">
-            <h3>Programming With Java</h3>
-          <p class="card-text">General Purpose Language - You can use Java to develop games, desktop apps, Servers and so on.</p>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                What You Want to Get !
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Previous Year Question Paper</a></li>
-              <!-- <li><a class="dropdown-item" href="https://drive.google.com/file/d/1y8YpLQCWPlm2foAahXsx8YKE3CgXnaFU/view?usp=sharing">Important Question</a></li> -->
-               <!-- <li><a class="dropdown-item" href="https://youtube.com/playlist?list=PLmRclvVt5DtlXMvqL0zDqQu9Cvy6rsmd4">Shhh! Keep this content Secret. </a></li> -->
-              <!-- <li><a class="dropdown-item" href="https://drive.google.com/file/d/1GRyV1sLOvyx3wcQakW6klpZBtrgsE7v7/view?usp=share_link">Notes</a></li> -->
-              <!-- <li><a class="dropdown-item" href="#">Viva / Practical Question</a></li> -->
-              <!-- <li><a class="dropdown-item  " href="hw.html">Homeworks   <span class="badge animate bg-danger">New</span></a> -->
-	      <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Viva/Practical questions- on app<span class="badge animate bg-danger">New</span></a> -->
-         
-<!-- 	       <li><a class="dropdown-item  " href="https://youtube.com/playlist?list=PLu0W_9lII9agpFUAlPFe_VNSlXW5uE0YL">Skill/Learn <span class="badge animate bg-danger">New</span></a> -->
-              
-            </li>
-	    <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Skill Section -ON E TUN App<span class="badge animate bg-danger">New</span></a> -->
-            
-            </ul>
-          </div>
+    <div class="subject-box">
+      <h3>Java Programming</h3>
+      <p>Versatile object-oriented language used for backend systems, apps, games, and more.</p>
+      <div class="actions">
+        <a href="https://drive.google.com/file/d/1G4Z7m_dHSh58XdX6etmQH0gHsErCWtA2/view?usp=sharing">
+          PYQs 22-23
+          <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+        </a>
+        <a href="https://drive.google.com/file/d/1eZv5Sj8xt7cuaFe3-LQFktucNsJY-pv-/view?usp=sharing">
+          PYQs 23-24
+          <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+        </a>
       </div>
+    </div>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);"  data-aos="fade-down">
-        <img src="images/course1.jpg" class="card-img-top" alt="..." height="200px">
-        <div class="card-body">
-            <h3>Digital Forecics and Cyber security</h3>
-          <p class="card-text">Learn about The different components in the Computer System Architecture are Input Unit, Output Unit, Storage Unit, Arithmetic Logic Unit, Control Unit etc. and How to prevent them from miss use and find relevent information</p>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                What You Want to Get !
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Previous Year Question Paper</a></li>
-              <!-- <li><a class="dropdown-item" href="https://drive.google.com/file/d/1y8YpLQCWPlm2foAahXsx8YKE3CgXnaFU/view?usp=sharing">Important Question</a></li> -->
-              <!-- <li><a class="dropdown-item" href="#"></a></li> -->
-              <!-- <li><a class="dropdown-item" href="hw.html">Homeworks   <span class="badge animate bg-danger">New</span></a> -->
-              <!-- <li><a class="dropdown-item" href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Viva/Practical Questions -ON App <span class="badge animate bg-danger">New</span></a></li> -->
-           <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Skill Section -ON E TUN App<span class="badge animate bg-danger">New</span></a> -->
-            
-	    </ul>
-          </div>
+    <div class="subject-box">
+      <h3>Cloud Computing</h3>
+      <p>Modern computing approach delivering scalable resources via the internet.</p>
+      <div class="actions">
+        <a href="https://drive.google.com/drive/folders/1-Ajkqns03fQ-DdOqYtWoHeytL9R3QmGP?usp=sharing">PYQs
+         <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+        </a>
+        <a href="https://youtu.be/dmGybCohHsw?si=Xi29k2KVcAAfFRGC">Youtube Free Course</a>
+<!--         <a href="#">Skill Content (App)</a> -->
       </div>
+    </div>
 
-      <div class="card" style="width: 21rem; background-color: hsl(165, 22%, 96%);"  data-aos="fade-up">
-        <img src="images/course1.jpg" class="card-img-top" alt="..." height="200px">
-        <div class="card-body">
-            <h3>Cloud Computing</h3>
-          <p class="card-text">Infinite power of computing and storage by big companies to you on your computer even if its just i3</p>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                What You Want to Get !
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Previous Year Question Paper</a></li>
-              <!-- <li><a class="dropdown-item" href="https://drive.google.com/file/d/1y8YpLQCWPlm2foAahXsx8YKE3CgXnaFU/view?usp=sharing">Important Question</a></li> -->
-              <!-- <li><a class="dropdown-item" href="https://youtube.com/playlist?list=PLAOnhLRjMTMDigfUzaAAQo7lbfScPFtHs">DBMS now simple Jitender Ajmera Sir</a></li> -->
-	      <!-- <li><a class="dropdown-item" href="#">Viva / Practical Question</a></li> -->
-              <!-- <li><a class="dropdown-item  " href="hw.html">Homeworks   <span class="badge animate bg-danger">New</span></a> -->
-              <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Viva/Practical Questions -in  App <span class="badge animate bg-danger">New</span></a> -->
-               <!-- <li><a class="dropdown-item  " href="https://play.google.com/store/apps/details?id=com.anithing.e_tunlp1">Skill Section -ON E TUN App<span class="badge animate bg-danger">New</span></a> -->
-            
-            </li>
-		    <!-- <li><a class="dropdown-item  " href="https://drive.google.com/file/d/1q0PDctOLmZYjcAtjo2fcibi3PUhJvagU/view?usp=sharing">Notes   <span class="badge animate bg-danger">New</span></a> -->
-              
-            </ul>
-          </div>
+    <div class="subject-box">
+      <h3>Cyber Security</h3>
+      <p>Study of protecting systems and data from unauthorized access and digital attacks.</p>
+      <div class="actions">
+        <a href="https://drive.google.com/drive/folders/1-Ajkqns03fQ-DdOqYtWoHeytL9R3QmGP?usp=sharing">PYQs
+         <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+        </a>
+<!--         <a href="#">Ethical Hacking Basics</a> -->
+<!--         <a href="#">Skill Content (App)</a> -->
       </div>
-			  
-      <footer>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)"  data-aos="fade-up">
-          © 2022 Copyright:
-          <a class="text-dark fw-bold" href="home.html">E-Tun</a>
-        </div>
-      </footer>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-    </script>
-     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      offset :200,
-      duration : 1000,
-      delay : 50,
-      easing: 'ease-in-quad',
-    });
-  </script>
+    </div>
+
+    <div class="subject-box">
+      <h3>Full Stack Development</h3>
+      <p>Learn to build complete websites and apps with front-end and back-end technologies.</p>
+      <div class="actions">
+        <a href="https://drive.google.com/drive/folders/1-Ajkqns03fQ-DdOqYtWoHeytL9R3QmGP?usp=sharing">PYQ's
+         <img class="drive-icon" src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+      </a>
+<!--         <a href="#">Courses</a> -->
+<!--         <a href="#">Live Projects</a> -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 E-Tun. Made for MCA Students with ❤️</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
