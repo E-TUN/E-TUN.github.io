@@ -43,7 +43,10 @@
   <!-- Header -->
   <header class="sticky top-0 bg-white shadow z-50 p-4 flex justify-between items-center">
     <h1 class="text-2xl font-bold text-blue-700">📚 E-Tun: Everything You Need</h1>
-    <button class="bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">Dark Mode</button>
+    <div class="flex gap-2">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">Dark Mode</button>
+      <button onclick="sharePage()" class="bg-green-500 text-white px-4 py-2 rounded-xl hover:bg-green-600">🔗 Share</button>
+    </div>
   </header>
 
   <!-- Welcome Section -->
@@ -91,12 +94,28 @@
     <blockquote class="italic text-xl text-blue-600">“Chhoti Machine, Badi Chinta Door” – Students’ Trust 💯</blockquote>
     <p class="mt-4 text-gray-700">Used by 1000+ students with ❤️, not SEO. Share with your study gang!</p>
     <div class="mt-6">
-      <button class="bg-green-500 text-white px-6 py-2 rounded-xl hover:bg-green-600">🔗 Share This Page</button>
+      <button onclick="sharePage()" class="bg-green-500 text-white px-6 py-2 rounded-xl hover:bg-green-600">🔗 Share This Page</button>
     </div>
     <footer class="mt-10 text-sm text-gray-500">
       Made with 💙 by students, for students. | Version 2.0
     </footer>
   </section>
 
+  <script>
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'E-Tun Study Hub',
+          text: 'Check out E-Tun for MCA 2nd Sem resources!',
+          url: window.location.href
+        }).then(() => console.log('Shared successfully'))
+          .catch(error => console.error('Share failed:', error));
+      } else {
+        navigator.clipboard.writeText(window.location.href)
+          .then(() => alert('Link copied to clipboard!'))
+          .catch(() => alert('Failed to copy link.'));
+      }
+    }
+  </script>
 </body>
 </html>
