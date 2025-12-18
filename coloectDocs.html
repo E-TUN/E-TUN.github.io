@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>संलग्न दस्तावेज अपलोड</title>
+
+<style>
+body{
+  font-family:Mangal,Arial;
+  background:#f3f4f6;
+  margin:20px
+}
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:8px;
+  margin-bottom:15px
+}
+table{
+  width:100%;
+  border-collapse:collapse
+}
+th,td{
+  border:1px solid #000;
+  padding:6px;
+  font-size:14px
+}
+th{
+  background:#eee
+}
+.center{text-align:center}
+.hidden{display:none}
+button{
+  padding:10px 20px;
+  font-size:15px;
+  cursor:pointer
+}
+</style>
+</head>
+
+<body>
+
+<h2>संलग्न दस्तावेज</h2>
+
+<div class="card">
+<table>
+<thead>
+<tr>
+<th>क्रम</th>
+<th>दस्तावेज</th>
+<th>हाँ</th>
+<th>नहीं</th>
+<th>अपलोड</th>
+</tr>
+</thead>
+<tbody id="docTable"></tbody>
+</table>
+</div>
+
+<!-- ===== LOCAL RESIDENT SUB DOCUMENTS ===== -->
+<div class="card hidden" id="localBox">
+<b>स्थानीय निवासी (कोई 2 अनिवार्य)</b><br><br>
+
+<label>
+<input type="checkbox" class="localChk" data-i="0"> मतदाता पहचान पत्र
+<input type="file" class="localFile hidden">
+</label><br><br>
+
+<label>
+<input type="checkbox" class="localChk" data-i="1"> राशन कार्ड
+<input type="file" class="localFile hidden">
+</label><br><br>
+
+<label>
+<input type="checkbox" class="localChk" data-i="2"> आधार कार्ड
+<input type="file" class="localFile hidden">
+</label><br><br>
+
+<label>
+<input type="checkbox" class="localChk" data-i="3"> जन आधार कार्ड
+<input type="file" class="localFile hidden">
+</label>
+</div>
+
+<div class="center">
+<button onclick="generatePDF()">PDF तैयार करें</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+const { jsPDF } = window.jspdf;
+
+/* ===== DOCUMENT LIST (16) ===== */
+const documents = [
+  "अधिकतम शैक्षणिक योग्यता सम्बन्धी अंकतालिका/प्रमाण पत्र",
+  "NCTE मान्यता प्राप्त द्विवर्षीय NTT/DPSE/Bed/D.EL.Ed",
+  "सैकण्डरी की अंकतालिका/प्रमाण पत्र",
+  "हायर सैकण्डरी की अंकतालिका/प्रमाण पत्र",
+  "स्थानीय निवासी प्रमाण पत्र",
+  "अनुसूचित जाति/जनजाति/अल्पसंख्यक प्रमाण पत्र",
+  "पिछड़ा वर्ग (OBC) प्रमाण पत्र",
+  "EWS प्रमाण पत्र",
+  "आदिम व घुमन्तु जाति प्रमाण पत्र",
+  "दिव्यांग जन प्रमाण पत्र",
+  "GNM/ANM/Nursing प्रमाण पत्र",
+  "RSCIT / PGDCA प्रमाण पत्र",
+  "आंगनबाडी अनुभव प्रमाण पत्र",
+  "NCTE मान्यता प्राप्त NTT/DPSE/AB Ed/E EL Ed",
+  "विधवा/तलाकशुदा प्रमाण पत्र",
+  "अन्य"
+];
+
+/* ===== CREATE TABLE ===== */
+const tbody = document.getElementById("docTable");
+
+documents.forEach((doc,i)=>{
+ tbody.innerHTML += `
+ <tr>
+  <td class="center">${i+1}</td>
+  <td>${doc}</td>
+  <td class="center">
+    <input type="radio" name="doc${i}" value="yes" onchange="docYes(${i})">
+  </td>
+  <td class="center">
+    <input type="radio" name="doc${i}" value="no" onchange="docNo(${i})">
+  </td>
+  <td>
+    <input type="file" id="file${i}" class="hidden">
+  </td>
+ </tr>`;
+});
+
+/* ===== YES / NO LOGIC ===== */
+function docYes(i){
+  if(i !== 4){
+    document.getElementById("file"+i).classList.remove("hidden");
+  }
+  if(i === 4){
+    document.getElementById("localBox").classList.remove("hidden");
+  }
+}
+
+function docNo(i){
+  if(i !== 4){
+    document.getElementById("file"+i).classList.add("hidden");
+  }
+  if(i === 4){
+    document.getElementById("localBox").classList.add("hidden");
+
+    // reset local checkboxes & files
+    localChk.forEach((chk, idx)=>{
+      chk.checked = false;
+      localFile[idx].classList.add("hidden");
+      localFile[idx].value = "";
+    });
+  }
+}
+
+/* ===== LOCAL RESIDENT LOGIC (ONLY 2) ===== */
+const localChk = document.querySelectorAll(".localChk");
+const localFile = document.querySelectorAll(".localFile");
+
+localChk.forEach((chk, i)=>{
+  chk.addEventListener("change",()=>{
+    const checked = [...localChk].filter(x=>x.checked);
+    if(checked.length > 2){
+      chk.checked = false;
+      alert("केवल 2 दस्तावेज चुनें");
+      return;
+    }
+    localFile[i].classList.toggle("hidden", !chk.checked);
+
+    if(!chk.checked){
+      localFile[i].value = "";
+    }
+  });
+});
+
+/* ===== PDF GENERATION ===== */
+async function generatePDF(){
+  const pdf = new jsPDF();
+  let pageNo = 1;
+
+  for(let i=0;i<documents.length;i++){
+    const yes = document.querySelector(`input[name=doc${i}][value=yes]`);
+    if(!yes || !yes.checked) continue;
+
+    // ===== 5th document special handling =====
+    if(i === 4){
+      const selected = [];
+      localChk.forEach((chk, idx)=>{
+        if(chk.checked){
+          selected.push({file: localFile[idx].files[0], name: chk.parentElement.innerText.trim()});
+        }
+      });
+
+      if(selected.length !== 2){
+        alert("स्थानीय निवासी हेतु 2 दस्तावेज अनिवार्य हैं");
+        return;
+      }
+
+      for(const doc of selected){
+        if(!doc.file){
+          alert("स्थानीय निवासी दस्तावेज अपलोड करें");
+          return;
+        }
+        await addImage(pdf, doc.file, pageNo++);
+      }
+
+      continue;
+    }
+
+    // ===== All other documents =====
+    const file = document.getElementById("file"+i).files[0];
+    if(!file){
+      alert("सभी चयनित दस्तावेज अपलोड करें");
+      return;
+    }
+    await addImage(pdf, file, pageNo++);
+  }
+
+  pdf.save("documents.pdf");
+}
+
+/* ===== ADD IMAGE + PAGE NUMBER ===== */
+async function addImage(pdf,file,pageNo){
+  const img = await readFile(file);
+  pdf.addImage(img,"JPEG",10,10,190,260);
+  pdf.text(`Page No. ${pageNo}`,105,290,{align:"center"});
+  pdf.addPage();
+}
+
+/* ===== FILE READER ===== */
+function readFile(f){
+  return new Promise(r=>{
+    const fr = new FileReader();
+    fr.onload = e => r(e.target.result);
+    fr.readAsDataURL(f);
+  });
+}
+</script>
+
+</body>
+</html>

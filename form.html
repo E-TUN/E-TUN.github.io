@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>आवेदन पत्र — Aanganwadi</title>
+
+<!-- html2pdf libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<style>
+  :root{
+    --card-bg: #ffffff;
+    --muted: #6b7280;
+    --accent: #0f4c81;
+    --accent-2:#b91c1c;
+    --soft:#f3f4f6;
+    --border:#e5e7eb;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: "Noto Sans", "Mangal", Arial, sans-serif;
+    background: linear-gradient(180deg,#f8fafc 0%, #eef2f7 100%);
+    color:#111827;
+    margin:0;padding:24px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .print-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.photo-box {
+  width: 35mm;
+  height: 45mm;
+  border: 2px dashed #000;
+  font-size: 11px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+}
+
+.no-break {
+  page-break-inside: avoid;
+}
+
+  .container{max-width:960px;margin:0 auto;background:var(--card-bg);border-radius:10px;padding:22px;box-shadow:0 6px 18px rgba(15,23,42,0.08);border:1px solid var(--border);}
+  h1{font-size:20px;text-align:center;margin:4px 0 6px;color:var(--accent-2)}
+  p.subtitle{text-align:center;margin:0 0 18px;color:var(--muted);font-size:13px}
+
+  .progress{display:flex;gap:8px;margin:18px 0}
+  .step-dot{flex:1;height:10px;background:var(--border);border-radius:6px;position:relative}
+  .step-dot.active{background:linear-gradient(90deg,var(--accent),#06b6d4)}
+
+  .card{background:var(--soft);padding:16px;border-radius:8px;border:1px solid var(--border);margin-bottom:14px}
+  .section-title{font-weight:700;color:#0f172a;margin-bottom:8px}
+  label.field{display:block;font-weight:600;margin-top:12px;color:#0b1220}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px}
+
+  input[type="text"], input[type="email"], input[type="date"], input[type="number"], textarea, select {
+    width:100%;padding:10px;border-radius:6px;border:1px solid var(--border);font-size:14px;margin-top:6px;background:#fff;
+  }
+  textarea{min-height:88px;resize:vertical}
+  .row{display:flex;gap:12px}
+  .col{flex:1}
+
+  .checkbox-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:8px}
+  .choice{background:#fff;border:1px solid var(--border);padding:8px;border-radius:6px;display:flex;align-items:center;gap:8px}
+  .choice input{transform:scale(1.05)}
+
+  .nav{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
+  .btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:700}
+  .btn.primary{background:var(--accent);color:#fff}
+  .btn.ghost{background:transparent;border:1px solid var(--border);color:#111}
+  .btn.warn{background:#dc2626;color:#fff}
+
+  .small{font-size:13px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left;font-size:13px}
+  th{background:#f8fafc;font-weight:700}
+  .flex-right{text-align:right}
+
+  /* responsive */
+  @media (max-width:700px){
+    .row{flex-direction:column}
+  }
+</style>
+</head>
+
+<body>
+<div class="container" role="main">
+  <h1>आंगनबाडी कार्यकर्ता / सहायिका के मानदेय सेवा पद हेतु आवेदन पत्र</h1>
+  <p class="subtitle">(आवेदन दो प्रतियों में भरें) — विज्ञप्ति संख्या 01/2025-26 प्रकाशन दिनांक 10.12.2025</p>
+
+  <div class="progress" aria-hidden="true">
+    <div id="p1" class="step-dot active"></div>
+    <div id="p2" class="step-dot"></div>
+    <div id="p3" class="step-dot"></div>
+    <div id="p4" class="step-dot"></div>
+    <div id="p5" class="step-dot"></div>
+  </div>
+
+  <!-- STEP 1: Basic + Personal -->
+  <form id="wizardForm" novalidate>
+  <div id="step-1" class="step">
+    <div class="card">
+      <div class="section-title">स्थायी जानकारी</div>
+
+      <label class="field">बाल विकास परियोजना कार्यालय</label>
+      <input type="text" value="जोधपुर-शहर" readonly>
+
+      <div class="row">
+        <div class="col">
+          <label class="field">जिला</label>
+          <input type="text" value="जोधपुर" readonly>
+        </div>
+        <div class="col">
+          <label class="field">ग्राम पंचायत/शहरी निकाय</label>
+          <input type="text" value="जोधपुर" readonly>
+        </div>
+      </div>
+
+      <label class="field">वार्ड/राजस्व ग्राम <span class="small">(*)</span></label>
+      <input id="ward" name="ward" type="text" required>
+
+        <label class="field">आंगनबाडी केन्द्र का नाम <span class="small">(*)</span></label>
+        <input id="center_name" name="center_name" type="text" required>
+
+        <label class="field">पद <span class="small">(*)</span></label>
+        <input id="post_name" name="post_name" type="text" required>
+
+    </div>
+
+    <div class="card">
+      <div class="section-title">आवेदिका का विवरण</div>
+
+      <label class="field">1. आवेदिका का नाम (सुश्री / श्रीमती) <span class="small">(*)</span></label>
+      <input id="applicant_name" name="applicant_name" type="text" required>
+
+      <label class="field">2. पति का नाम <span class="small"></span></label>
+      <input id="husband_name" name="husband_name" type="text">
+
+      <label class="field">3. पिता का नाम <span class="small">(*)</span></label>
+      <input id="father_name" name="father_name" type="text" required>
+
+      <label class="field">4. पत्र व्यवहार का पता <span class="small">(*)</span></label>
+      <textarea id="address" name="address" required></textarea>
+
+      <div class="row">
+        <div class="col">
+          <label class="field">5. मोबाईल नम्बर <span class="small">(*)</span></label>
+          <input id="mobile" name="mobile" type="text" pattern="[0-9]{10}" placeholder="10 अंकों का मोबाइल" required>
+        </div>
+        <div class="col">
+          <label class="field">6. मेल आईडी</label>
+          <input id="email" name="email" type="email" placeholder="यदि है तो डालें">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class="field">7. जन्म तिथि (10वीं अंकतालिका अनुसार) <span class="small">(*)</span></label>
+          <input id="dob" name="dob" type="date" required>
+        </div>
+        <div class="col">
+          <label class="field">8. आयु (10.12.2025) — वर्ष <span class="small">(*)</span></label>
+          <input id="age_years" name="age_years" type="number" min="0" readonly>
+        </div>
+        <div class="col" style="flex:0.8">
+          <label class="field">माह <span class="small">(*)</span></label>
+          <input id="age_months" name="age_months" type="number" min="0" max="11" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <div>
+        <button type="button" class="btn ghost" id="clearBtn">Clear Form</button>
+      </div>
+      <div style="margin-left:auto">
+        <button type="button" class="btn primary" onclick="nextStep(1)">Next ›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Caste & Marital -->
+  <div id="step-2" class="step" style="display:none">
+    <div class="card">
+      <div class="section-title">9. वर्ग (मुख्य श्रेणी — एक चुनें)</div>
+
+      <div class="checkbox-grid" role="radiogroup" aria-required="true">
+        <label class="choice"><input type="radio" name="main_caste" value="अनु जाति" required> अनुसूचित जाति</label>
+        <label class="choice"><input type="radio" name="main_caste" value="अनु जनजाति"> अनुसूचित जनजाति</label>
+        <label class="choice"><input type="radio" name="main_caste" value="OBC"> ओ.बी.सी (OBC)</label>
+        <label class="choice"><input type="radio" name="main_caste" value="सामान्य"> सामान्य</label>
+        <label class="choice"><input type="radio" name="main_caste" value="SBC"> एसबीसी</label>
+        <label class="choice"><input type="radio" name="main_caste" value="EWS"> आर्थिक पिछड़ा (EWS)</label>
+        <label class="choice"><input type="radio" name="main_caste" value="अल्प संख्यक"> अल्प संख्यक</label>
+      </div>
+
+      <label class="field">अतिरिक्त श्रेणियाँ (यदि लागू हो — एक से अधिक चुनें)</label>
+      <div class="checkbox-grid">
+        <label class="choice"><input type="checkbox" name="add_cat" value="आदिम व घुमन्तु जाति"> आदिम व घुमन्तु जाति</label>
+        <label class="choice"><input type="checkbox" name="add_cat" value="विमुक्त"> विमुक्त व अर्द्धघुमन्तु</label>
+        <label class="choice"><input type="checkbox" name="add_cat" value="दिव्यांग"> दिव्यांग जन</label>
+        <label class="choice"><input type="checkbox" name="add_cat" value="नहीं"> नहीं</label>
+      </div>
+
+      <label class="field">प्रमाण पत्र संलग्न पृष्ठ संख्या FILLED BY OFFICIAL<span class="small">(मुख्य/अतिरिक्त)</span></label>
+      <input id="caste_page_num" name="caste_page_num" type="text" disabled>
+    </div>
+
+    <div class="card">
+      <div class="section-title">10. वैवाहिक स्थिति</div>
+
+      <div class="checkbox-grid" role="radiogroup">
+        <label class="choice"><input type="radio" name="marital" value="विवाहित" required> विवाहित</label>
+        <label class="choice"><input type="radio" name="marital" value="विधवा"> विधवा</label>
+        <label class="choice"><input type="radio" name="marital" value="परित्यक्ता"> परित्यक्ता</label>
+        <label class="choice"><input type="radio" name="marital" value="तलाकशुदा"> तलाकशुदा</label>
+        <label class="choice"><input type="radio" name="marital" value="अविवाहित"> अविवाहित</label>
+      </div>
+
+      <label class="field">प्रमाण पत्र (यदि विधवा/परित्यक्ता/तलाकशुदा) — पेज संख्या</label>
+      <input id="marital_page" name="marital_page" type="text" placeholder="यदि लागू हो तो पेज नंबर filled by official" disabled>
+
+      <label class="field">11. विवाह की तिथि (यदि लागू)</label>
+      <input id="marriage_date" name="marriage_date" type="date">
+      <label class="small hint">विधवा/परित्यक्ता/तलाकशुदा स्थिति में प्रमाण-पृष्ठ अनिवार्य होगा।</label>
+    </div>
+
+    <div class="nav">
+      <button type="button" class="btn ghost" onclick="prevStep(2)">‹ Back</button>
+      <div style="margin-left:auto">
+        <button type="button" class="btn primary" onclick="nextStep(2)">Next ›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Education + Experience + Other quals -->
+  <div id="step-3" class="step" style="display:none">
+    <div class="card">
+      <div class="section-title">12. शैक्षणिक योग्यता का विवरण</div>
+
+      <table aria-label="education table">
+        <thead>
+          <tr><th>क्रम</th><th>उत्तीर्ण कक्षा</th><th>विद्यालय/बोर्ड/विश्वविद्यालय</th><th>वर्ष</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>सैकण्डरी</td><td><input id="edu_board_0" name="edu_board_0" type="text" ></td><td><input id="edu_year_0" name="edu_year_0" type="text" ></td>
+          </tr>
+          <tr>
+            <td>2</td><td>हायर सैकण्डरी</td><td><input id="edu_board_1" name="edu_board_1" type="text" ></td><td><input id="edu_year_1" name="edu_year_1" type="text"></td>
+          </tr>
+          <tr>
+            <td>3</td><td>स्नातक</td><td><input id="edu_board_2" name="edu_board_2" type="text" ></td><td><input id="edu_year_2" name="edu_year_2" type="text" ></td>
+          </tr>
+          <tr>
+            <td>4</td><td>स्नातकोत्तर</td><td><input id="edu_board_3" name="edu_board_3" type="text" ></td><td><input id="edu_year_3" name="edu_year_3" type="text" ></td>
+          </tr>
+          <tr>
+            <td>5</td><td>NTT / DPSC / B.Ed / R.E.Ed</td><td><input id="edu_board_4" name="edu_board_4" type="text"></td><td><input id="edu_year_4" name="edu_year_4" type="text"></td>
+          </tr>
+          <tr>
+            <td>6</td><td>कम्प्यूटर कोर्स (RS-CIT / PGDCA)</td><td><input id="edu_board_5" name="edu_board_5" type="text"></td><td><input id="edu_year_5" name="edu_year_5" type="text"></td>
+          </tr>
+          <tr>
+            <td>7</td><td>G.N.M. / Ayurved Nursing</td><td><input id="edu_board_6" name="edu_board_6" type="text"></td><td><input id="edu_year_6" name="edu_year_6" type="text"></td>
+          </tr>
+          <tr>
+            <td>8</td><td>A.N.M.</td><td><input id="edu_board_7" name="edu_board_7" type="text"></td><td><input id="edu_year_7" name="edu_year_7" type="text"></td>
+          </tr>
+          <tr>
+            <td>9</td><td>अन्य</td><td><input id="edu_board_8" name="edu_board_8" type="text"></td><td><input id="edu_year_8" name="edu_year_8" type="text"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="section-title">13. अनुभव</div>
+      <label class="field">आगनबाडी कार्यकर्ता / मिनी आंगनबाडी कार्यकर्ता / सहायिका/आशा सहयोगिनी/शिशुपालना गृह कार्यकर्ता / साचिन के रूप में दिनांक 10.12.24 तक एक वर्ष से अधिक का कार्यानुभवन प्रमाण पत्र (यदि लागू हो)</label>
+      <textarea id="experience" name="experience" placeholder="यहाँ विवरण दर्ज करें"></textarea>
+      <label class="field" >प्रमाण पत्र संलग्न पृष्ठ संख्या FILLED BY OFFICIAL</label>
+      <input id="experience_page" name="experience_page" type="text" disabled>
+    </div>
+
+    <div class="card">
+      <div class="section-title">14. अन्य योग्यता</div>
+      <div class="checkbox-grid">
+        <label class="choice"><input type="checkbox" name="other_qual" value="ANM"> ANM</label>
+        <label class="choice"><input type="checkbox" name="other_qual" value="GNM"> GNM</label>
+      </div>
+      <label class="field">प्रमाण पत्र पृष्ठ संख्या (यदि लागू)</label>
+      <input id="other_qual_page" name="other_qual_page" type="text">
+    </div>
+
+    <div class="card">
+      <div class="section-title">15. कम्प्यूटर कोर्स</div>
+      <div class="checkbox-grid">
+        <label class="choice"><input type="checkbox" name="comp_course" value="RSCIT"> RSCIT</label>
+        <label class="choice"><input type="checkbox" name="comp_course" value="PGDCA"> PGDCA</label>
+      </div>
+      <label class="field">प्रमाण पत्र पृष्ठ संख्या (यदि लागू)</label>
+      <input id="comp_course_page" name="comp_course_page" type="text">
+    </div>
+
+    <div class="nav">
+      <button type="button" class="btn ghost" onclick="prevStep(3)">‹ Back</button>
+      <div style="margin-left:auto">
+        <button type="button" class="btn primary" onclick="nextStep(3)">Next ›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: Documents + Signature -->
+  <div id="step-4" class="step" style="display:none">
+    <div class="card">
+      <div class="section-title">16. संलग्न दस्तावेज (हाँ/नहीं)</div>
+
+      <table>
+  <thead>
+    <tr>
+      <th>क्रम</th>
+      <th>दस्तावेज</th>
+      <th>हाँ</th>
+      <th>नहीं</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>सैकण्डरी की अंकतालिका/प्रमाण पत्र</td>
+      <td><input type="radio" name="doc1" value="yes" required></td>
+      <td><input type="radio" name="doc1" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td>हायर सैकण्डरी की अंकतालिका/प्रमाण पत्र</td>
+      <td><input type="radio" name="doc2" value="yes" required></td>
+      <td><input type="radio" name="doc2" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>3</td>
+      <td>स्नातक अंकतालिका/प्रमाण पत्र</td>
+      <td><input type="radio" name="doc3" value="yes" required></td>
+      <td><input type="radio" name="doc3" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td>स्नातकोत्तर अंकतालिका/प्रमाण पत्र</td>
+      <td><input type="radio" name="doc4" value="yes" required></td>
+      <td><input type="radio" name="doc4" value="no"></td>
+    </tr>
+<tr>
+  <td>5</td>
+  <td>
+    स्थानीय निवासी प्रमाण पत्र
+    <div style="font-size:12px; margin-top:4px; padding-left:10px;">
+      (निम्नलिखित में से कोई 02 वांछनीय दस्तावेज प्रस्तुत करें):
+      <ul style="margin:4px 0 0 15px; padding:0; list-style-type:disc;">
+        <li><input type="checkbox" class="doc5-sub" value="मतदाता पहचान पत्र"> मतदाता पहचान पत्र</li>
+        <li><input type="checkbox" class="doc5-sub" value="राशन कार्ड"> राशन कार्ड</li>
+        <li><input type="checkbox" class="doc5-sub" value="आधार कार्ड"> आधार कार्ड</li>
+        <li><input type="checkbox" class="doc5-sub" value="जनआधार कार्ड"> जनआधार कार्ड</li>
+        <li><input type="checkbox" class="doc5-sub" value="मूल निवास प्रमाण पत्र"> मूल निवास प्रमाण पत्र</li>
+        <li><input type="checkbox" class="doc5-sub" value="विवाह पंजीयन प्रमाण पत्र"> विवाह पंजीयन प्रमाण पत्र</li>
+      </ul>
+    </div>
+  </td>
+  <td><input type="radio" name="doc5" value="yes" id="doc5-yes" required></td>
+  <td><input type="radio" name="doc5" value="no" id="doc5-no"></td>
+</tr>
+
+
+
+    <tr>
+      <td>6</td>
+      <td>अनुसूचित जाति/जनजाति/अल्पसंख्यक प्रमाण पत्र</td>
+      <td><input type="radio" name="doc6" value="yes" required></td>
+      <td><input type="radio" name="doc6" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>7</td>
+      <td>पिछड़ा वर्ग (OBC) प्रमाण पत्र</td>
+      <td><input type="radio" name="doc7" value="yes" required></td>
+      <td><input type="radio" name="doc7" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>8</td>
+      <td>EWS प्रमाण पत्र</td>
+      <td><input type="radio" name="doc8" value="yes" required></td>
+      <td><input type="radio" name="doc8" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>9</td>
+      <td>आदिम व घुमन्तु जाति प्रमाण पत्र</td>
+      <td><input type="radio" name="doc9" value="yes" required></td>
+      <td><input type="radio" name="doc9" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>10</td>
+      <td>दिव्यांग जन प्रमाण पत्र</td>
+      <td><input type="radio" name="doc10" value="yes" required></td>
+      <td><input type="radio" name="doc10" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>11</td>
+      <td>GNM/ANM/Nursing प्रमाण पत्र</td>
+      <td><input type="radio" name="doc11" value="yes" required></td>
+      <td><input type="radio" name="doc11" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>12</td>
+      <td>RSCIT / PGDCA प्रमाण पत्र</td>
+      <td><input type="radio" name="doc12" value="yes" required></td>
+      <td><input type="radio" name="doc12" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>13</td>
+      <td>आंगनबाडी अनुभव प्रमाण पत्र</td>
+      <td><input type="radio" name="doc13" value="yes" required></td>
+      <td><input type="radio" name="doc13" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>14</td>
+      <td>NCTE मान्यता प्राप्त NTT/DPSE/AB Ed/E EL Ed</td>
+      <td><input type="radio" name="doc14" value="yes" required></td>
+      <td><input type="radio" name="doc14" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>15</td>
+      <td>विधवा/तलाकशुदा प्रमाण पत्र</td>
+      <td><input type="radio" name="doc15" value="yes" required></td>
+      <td><input type="radio" name="doc15" value="no"></td>
+    </tr>
+
+    <tr>
+      <td>16</td>
+      <td>अन्य</td>
+      <td><input type="radio" name="doc16" value="yes" required></td>
+      <td><input type="radio" name="doc16" value="no"></td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+    <div class="card">
+      <label class="field">दिनांक <span class="small">(*)</span></label>
+      <input id="final_date" name="final_date" type="date" required>
+    </div>
+
+    <div class="nav">
+      <button type="button" class="btn ghost" onclick="prevStep(4)">‹ Back</button>
+      <div style="margin-left:auto">
+        <button type="button" class="btn primary" onclick="nextStep(4)">Review ›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5: Review & Download -->
+  <div id="step-5" class="step" style="display:none">
+    <div class="card">
+      <div class="section-title">Review — जाँच करें और फिर PDF डाउनलोड करें</div>
+      <div id="reviewArea" class="small"></div>
+      <div class="hint small" style="margin-top:12px">यदि कुछ बदलना हो तो Back करें और संशोधित करें।</div>
+    </div>
+
+    <div class="nav">
+      <button type="button" class="btn ghost" onclick="prevStep(5)">‹ Back</button>
+      <div style="margin-left:auto">
+        <button type="button" class="btn primary" onclick="generatePDF()">PDF डाउनलोड करें</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+
+<!-- Hidden printable container -->
+<div id="printable" style="display:none;width:210mm;padding:15mm;background:#fff;box-sizing:border-box;"></div>
+
+<script>
+/* -------------------------
+   Wizard control & Steps
+------------------------- */
+let currentStep = 1;
+const totalSteps = 5;
+const autosaveKey = 'aanganwadi_form_v1';
+const form = document.getElementById('wizardForm');
+const TICK = '✔';
+const CROSS = '✖';
+
+function showProgress(){
+  for(let i=1;i<=totalSteps;i++){
+    const el = document.getElementById('p'+i);
+    if(!el) continue;
+    el.classList.toggle('active', i <= currentStep);
+  }
+}
+function showStep(n){
+  for(let i=1;i<=totalSteps;i++){
+    const s = document.getElementById('step-'+i);
+    if(s) s.style.display = (i===n) ? '' : 'none';
+  }
+  currentStep = n;
+  showProgress();
+  if(n===5) buildReview();
+}
+function prevStep(n){
+  showStep(Math.max(1, n-1));
+}
+function nextStep(n){
+  // validate current step before moving forward
+  if(!validateStep(n)) return;
+  showStep(Math.min(totalSteps, n+1));
+}
+
+/* -------------------------
+   Validation per step
+------------------------- */
+function validateStep(step){
+  // basic HTML5 validation for fields in that step
+  const stepEl = document.getElementById('step-'+step);
+  const inputs = stepEl.querySelectorAll('input,textarea,select');
+  // For radio groups we need to ensure required selection (main_caste, marital)
+  for(const inp of inputs){
+    if(inp.hasAttribute('required')){
+      // special handling for radio: check if any in group selected
+      if(inp.type === 'radio'){
+        const group = stepEl.querySelectorAll('input[name="'+inp.name+'"]');
+        if(group.length){
+          const chosen = Array.from(group).some(r => r.checked);
+          if(!chosen){
+            alert('कृपया विकल्प चुनें: "'+ inp.name +'"');
+            return false;
+          } else {
+            // skip other radios in group
+            // remove required attribute temporarily so not to prompt duplicates
+            group.forEach(r => r.removeAttribute('required'));
+            continue;
+          }
+        }
+      }
+      // standard validation
+      if(!inp.value || inp.value.trim()===''){
+        // but some fields are optional intentionally (like certain education rows) - required attribute ensures only mandatory checked
+        alert('कृपया आवश्यक फील्ड भरें: "' + (inp.previousElementSibling ? inp.previousElementSibling.innerText : inp.name) + '"');
+        inp.focus();
+        return false;
+      }
+      // pattern check for mobile
+      if(inp.id === 'mobile'){
+        const m = inp.value.trim();
+        if(!/^\d{10}$/.test(m)){
+          alert('कृपया 10 अंकों का वैध मोबाइल नंबर दर्ज करें।');
+          inp.focus();
+          return false;
+        }
+      }
+    }
+  }
+
+  // Additional conditional validation:
+  if(step === 2){
+    // if marital is विधवा/परित्यक्ता/तलाकशुदा -> marital_page required
+    const marital = document.querySelector('input[name="marital"]:checked');
+    if(marital && ['विधवा','परित्यक्ता','तलाकशुदा'].includes(marital.value)){
+      const mp = document.getElementById('marital_page');
+      if(!mp.value || mp.value.trim()===''){
+        alert('कृपया वैवाहिक स्थिति का प्रमाण-पृष्ठ संख्या दर्ज करें।');
+        mp.focus();
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+/* -------------------------
+   Auto-save (debounced)
+------------------------- */
+let saveTimer = null;
+function saveDataToLocal(){
+  const data = {};
+  const fields = form.querySelectorAll('input,textarea,select');
+  fields.forEach(f => {
+    if(f.type==='radio'){
+      // store checked value only once per name
+      if(f.checked){
+        data[f.name] = f.value;
+      } else {
+        if(!(f.name in data)) data[f.name] = data[f.name] || '';
+      }
+    } else if(f.type==='checkbox'){
+      // group multiple checkboxes by name
+      if(!f.name) return;
+      if(!(f.name in data)) data[f.name] = [];
+      if(f.checked) data[f.name].push(f.value);
+    } else {
+      if(f.id) data[f.id] = f.value;
+    }
+  });
+  localStorage.setItem(autosaveKey, JSON.stringify(data));
+}
+function scheduleSave(){
+  if(saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveDataToLocal, 600);
+}
+
+/* -------------------------
+   Load from localStorage
+------------------------- */
+function loadSaved(){
+  const raw = localStorage.getItem(autosaveKey);
+  if(!raw) return;
+  try{
+    const data = JSON.parse(raw);
+    const fields = form.querySelectorAll('input,textarea,select');
+    fields.forEach(f => {
+      if(f.type==='radio'){
+        if(data[f.name] && data[f.name] === f.value) f.checked = true;
+      } else if(f.type==='checkbox'){
+        if(data[f.name] && Array.isArray(data[f.name]) && data[f.name].includes(f.value)) f.checked = true;
+      } else {
+        if(f.id && (f.id in data)) f.value = data[f.id];
+      }
+    });
+  }catch(e){
+    console.warn('load err', e);
+  }
+}
+
+/* -------------------------
+   Clear form
+------------------------- */
+document.getElementById('clearBtn').addEventListener('click', (e)=>{
+  if(!confirm('सारा डेटा हटाना है? (LocalStorage भी साफ होगा)')) return;
+  localStorage.removeItem(autosaveKey);
+  form.reset();
+});
+
+/* -------------------------
+   Wire up auto-save listeners
+------------------------- */
+form.addEventListener('input', scheduleSave);
+form.addEventListener('change', scheduleSave);
+
+/* -------------------------
+   Build review content
+------------------------- */
+function buildReview(){
+  const data = JSON.parse(localStorage.getItem(autosaveKey) || '{}');
+  let html = '<table style="width:100%;border-collapse:collapse"><tbody>';
+  // list key fields in readable format
+  const fieldsToShow = [
+    ['केंद्र / पद', 'center_name'],
+    ['आवेदिका का नाम', 'applicant_name'],
+    ['पति का नाम', 'husband_name'],
+    ['पिता का नाम', 'father_name'],
+    ['पता', 'address'],
+    ['मोबाइल', 'mobile'],
+    ['ईमेल', 'email'],
+    ['जन्मतिथि', 'dob'],
+    ['आयु', 'age_years'],
+    ['आयु (माह)', 'age_months'],
+    ['मुख्य जाति', 'main_caste'],
+    ['अतिरिक्त श्रेणी', 'add_cat'],
+    ['वैवाहिक स्थिति', 'marital'],
+    ['विवाह तिथि', 'marriage_date'],
+    ['अनुभव', 'experience'],
+    ['दिनांक', 'final_date'],
+  ];
+  fieldsToShow.forEach(f=>{
+    const label = f[0], key = f[1];
+    let val = data[key] || '';
+    if(Array.isArray(val)) val = val.join(', ');
+    html += `<tr><td style="padding:6px;border-bottom:1px solid #eee;font-weight:600">${label}</td><td style="padding:6px;border-bottom:1px solid #eee">${escapeHtml(val)}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('reviewArea').innerHTML = html;
+}
+
+/* -------------------------
+   PDF Generation (html2pdf)
+------------------------- */
+function escapeHtml(text){
+  if(text === undefined || text === null) return '';
+  return String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+}
+
+function collectEducationRowsHTML(){
+  let rows = '';
+  for(let i=0;i<9;i++){
+    const board = document.getElementById('edu_board_'+i)?.value || '';
+    const year = document.getElementById('edu_year_'+i)?.value || '';
+    const cls = ['सैकण्डरी','हायर सैकण्डरी','स्नातक','स्नातकोत्तर','NTT/DPSC/B.Ed','कम्प्यूटर कोर्स','G.N.M.','A.N.M.','अन्य'][i];
+    rows += `<tr><td style="padding:6px;border:1px solid #ddd">${i+1}</td><td style="padding:6px;border:1px solid #ddd">${cls}</td><td style="padding:6px;border:1px solid #ddd">${escapeHtml(board)}</td><td style="padding:6px;border:1px solid #ddd">${escapeHtml(year)}</td></tr>`;
+  }
+  return rows;
+}
+
+const doc5Checkboxes = document.querySelectorAll('.doc5-sub');
+const doc5Yes = document.getElementById('doc5-yes');
+const doc5No = document.getElementById('doc5-no');
+
+doc5Checkboxes.forEach(cb => {
+  cb.addEventListener('change', () => {
+    const checked = Array.from(doc5Checkboxes).filter(c => c.checked);
+    if (checked.length >= 2) {
+      doc5Yes.checked = true;
+    } else {
+      doc5Yes.checked = false;
+      doc5No.checked = true;
+    }
+
+    // Save selected sub-docs in data object
+    data['doc5_sub'] = checked.map(c => c.value);
+  });
+});
+
+function generatePDF() {
+  // 1️⃣ Save current form
+  saveDataToLocal();
+
+  const raw = localStorage.getItem(autosaveKey);
+  const data = raw ? JSON.parse(raw) : {};
+
+  const printable = document.getElementById('printable');
+  printable.innerHTML = '';
+
+  // ================= HEADER =================
+  const header = `
+  <div style="text-align:center;">
+    <h2 style="margin:0 0 6px;font-size:18px">
+      आंगनबाडी कार्यकर्ता / सहायिका के मानदेय सेवा पद हेतु आवेदन पत्र
+    </h2>
+    <div style="font-size:13px">(आवेदन दो प्रतियों में भरें)</div>
+    <div style="font-size:13px">(विज्ञप्ति संख्या 01/2025-26 प्रकाशन दिनांक 10.12.2025)</div>
+    <hr style="margin:10px 0 14px">
+  </div>`;
+
+  // ================= FIXED DETAILS =================
+  const fixed = `
+  <table style="width:100%;font-size:13px;border-collapse:collapse;margin-bottom:10px">
+    <tr>
+      <td style="width:75%;vertical-align:top">
+        <table style="width:100%">
+          <tr><td><strong>बाल विकास परियोजना कार्यालय:</strong></td><td>जोधपुर-शहर</td></tr>
+          <tr><td><strong>जिला:</strong></td><td>जोधपुर</td></tr>
+          <tr><td><strong>ग्राम पंचायत / शहरी निकाय:</strong></td><td>जोधपुर</td></tr>
+          <tr><td><strong>वार्ड:</strong></td><td>${escapeHtml(data.ward || '')}</td></tr>
+          <tr><td><strong>केंद्र:</strong></td><td>${escapeHtml(data.center_name || '')}</td></tr>
+          <tr><td><strong>पद:</strong></td><td>${escapeHtml(data.post_name || '')}</td></tr>
+        </table>
+      </td>
+      <td style="width:25%;text-align:right;vertical-align:top">
+        <div class="photo-box">पासपोर्ट साइज<br>फोटो यहाँ<br>चिपकाएँ</div>
+      </td>
+    </tr>
+  </table>`;
+
+  // ================= PERSONAL =================
+  const personal = `
+  <table style="width:100%;font-size:13px;border-collapse:collapse">
+    <tr><td><strong>आवेदिका का नाम:</strong></td><td>${escapeHtml(data.applicant_name || '')}</td></tr>
+    <tr><td><strong>पति का नाम:</strong></td><td>${escapeHtml(data.husband_name || '')}</td></tr>
+    <tr><td><strong>पिता का नाम:</strong></td><td>${escapeHtml(data.father_name || '')}</td></tr>
+    <tr><td><strong>पता:</strong></td><td>${escapeHtml(data.address || '')}</td></tr>
+    <tr><td><strong>मोबाइल:</strong></td><td>${escapeHtml(data.mobile || '')}</td></tr>
+    <tr><td><strong>ईमेल:</strong></td><td>${escapeHtml(data.email || '')}</td></tr>
+    <tr><td><strong>जन्मतिथि:</strong></td><td>${escapeHtml(data.dob || '')}</td></tr>
+    <tr><td><strong>आयु:</strong></td>
+      <td>${escapeHtml(data.age_years || '')} वर्ष ${escapeHtml(data.age_months || '')} माह</td>
+    </tr>
+  </table><br>`;
+
+  // ================= CASTE =================
+const caste = `
+<table style="width:100%;font-size:13px;border-collapse:collapse">
+  <tr>
+    <td><strong>मुख्य जाति:</strong></td>
+    <td>${escapeHtml(data.main_caste || '')}</td>
+  </tr>
+
+  <tr>
+    <td><strong>अतिरिक्त श्रेणियाँ:</strong></td>
+    <td>
+      ${Array.isArray(data.add_cat) && data.add_cat.length
+        ? escapeHtml(data.add_cat.join(', '))
+        : 'Nil'}
+      
+      <div style="font-size:11px;color:#444;margin-top:6px;line-height:1.4">
+         <span style="font-style:italic">
+          (ऊपर दिए गए विकल्प को उम्मीदवार द्वारा भर दिया गया है, उपलब्ध विकल्प ये हैं)
+        </span>
+        <br>
+        (ii) आदिम व घुमन्तु जाति / विमुक्त एवं अर्द्धघुमन्तु जाति<br>
+        (iii) दिव्यांग जन (गति आधारित, प्रमस्तिष्क घात, रोगमुक्त कुष्ठ,
+        बौनापन, तेजाब आक्रमण की पीड़ित, पेशीय दुर्विकास)<br>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td><strong>वैवाहिक स्थिति:</strong></td>
+    <td>${escapeHtml(data.marital || '')}</td>
+  </tr>
+
+  <tr>
+    <td><strong>विवाह तिथि:</strong></td>
+    <td>${escapeHtml(data.marriage_date || '')}</td>
+  </tr>
+</table><br>`;
+
+
+  // ================= EDUCATION =================
+  const eduTable = `
+  <div style="font-weight:700;page-break-before:always">शैक्षणिक योग्यता:</div>
+  <table style="width:100%;font-size:13px;border-collapse:collapse">
+    <thead>
+      <tr style="background:#f3f4f6">
+        <th>क्रम</th><th>कक्षा</th><th>विद्यालय / बोर्ड</th><th>वर्ष</th>
+      </tr>
+    </thead>
+    <tbody>${collectEducationRowsHTML()}</tbody>
+  </table><br>`;
+
+ // ================= EXPERIENCE =================
+const exp = `
+<table style="width:100%;font-size:13px;border-collapse:collapse">
+
+  <tr>
+    <td><strong>अनुभव:</strong></td>
+    <td>${escapeHtml(data.experience || '')}</td>
+  </tr>
+
+  <tr>
+    <td><strong>अन्य योग्यता:</strong></td>
+    <td>
+      ${Array.isArray(data.other_qual) && data.other_qual.length
+        ? escapeHtml(data.other_qual.join(', '))
+        : 'Nil'}
+
+      <div style="font-size:11px;color:#444;margin-top:6px;line-height:1.4">
+        (i) ANM<br>
+        (ii) GNM<br>
+        <span style="font-style:italic">
+          (उपलब्ध विकल्प)
+        </span>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td><strong>कम्प्यूटर कोर्स:</strong></td>
+    <td>
+      ${Array.isArray(data.comp_course) && data.comp_course.length
+        ? escapeHtml(data.comp_course.join(', '))
+        : 'Nil'}
+
+      <div style="font-size:11px;color:#444;margin-top:6px;line-height:1.4">
+        (i) RSCIT<br>
+        (ii) PGDCA<br>
+        <span style="font-style:italic">
+          (उपलब्ध विकल्प)
+        </span>
+      </div>
+    </td>
+  </tr>
+
+</table><br>`;
+
+// ================= DOCUMENT SUMMARY (MANUAL PAGE NUMBER + LOCAL RESIDENT SUBLIST) =================
+const docLabelsSummary = {
+  1:'सैकण्डरी',2:'हायर सैकण्डरी',3:'स्नातक',4:'स्नातकोत्तर',5:'स्थानीय निवासी',
+  6:'SC/ST/अल्पसंख्यक',7:'OBC',8:'EWS',9:'आदिम व घुमन्तु',
+  10:'दिव्यांग',11:'GNM/ANM',12:'RSCIT',13:'आंगनबाडी अनुभव',
+  14:'NTT',15:'विधवा/तलाकशुदा',16:'अन्य'
+};
+
+let docsHtml = `
+<div style="font-weight:700;page-break-before:always">
+  संलग्न दस्तावेज:
+</div>
+
+<table style="width:100%;font-size:13px;border-collapse:collapse">
+  <thead>
+    <tr style="background:#f3f4f6">
+      <th style="border:1px solid #000;padding:6px">क्रम</th>
+      <th style="border:1px solid #000;padding:6px">दस्तावेज</th>
+      <th style="border:1px solid #000;padding:6px">स्थिति</th>
+      <th style="border:1px solid #000;padding:6px">संलग्न पृष्ठ संख्या</th>
+    </tr>
+  </thead>
+  <tbody>
+`;
+
+for (let i = 1; i <= 16; i++) {
+  const status = data['doc' + i] || '';
+
+  docsHtml += `
+    <tr>
+      <td style="border:1px solid #000;padding:6px;text-align:center">${i}</td>
+      <td style="border:1px solid #000;padding:6px">${docLabelsSummary[i]}</td>
+      <td style="border:1px solid #000;padding:6px;text-align:center">${escapeHtml(status)}</td>
+      <td style="border:1px solid #000;padding:12px">&nbsp;</td>
+    </tr>
+  `;
+
+  // Add sublist for doc 5 (स्थानीय निवासी) manually
+  if (i === 5) {
+    docsHtml += `
+      <tr>
+        <td colspan="4" style="border:1px solid #000;padding:6px;font-size:12px;">
+          (अपने जमा किए गए दस्तावेज़ पर एक छोटा सा निशान लगाएँ।):
+          <ul style="margin:4px 0 4px 20px;padding:0">
+            <li>मतदाता पहचान पत्र</li>
+            <li>राशन कार्ड</li>
+            <li>आधार कार्ड</li>
+            <li>जनआधार कार्ड</li>
+            <li>मूल निवास प्रमाण पत्र</li>
+            <li>विवाह पंजीयन प्रमाण पत्र</li>
+          </ul>
+        </td>
+      </tr>
+    `;
+  }
+}
+
+docsHtml += `
+  </tbody>
+</table><br>
+`;
+
+// ================= DECLARATION =================
+const declaration = `
+<div style="page-break-before:always;font-size:13px;margin-top:15px">
+
+  <div style="font-weight:700;margin-bottom:8px;text-align:center">
+    <br>घोषणा
+  </div>
+
+  <ol style="padding-left:20px;line-height:1.6">
+    <li>
+      मुझे विदित है कि आवेदित पद पूर्णतः मानदेय आधारित, अस्थाई एवं
+      स्वैच्छिक सेवा भावना से कार्य करने का मानदेय पद है।
+    </li>
+
+    <li>
+      मैं यह भी घोषणा करती हूँ कि मेरे घर में शौचालय है जिसका नियमित
+      उपयोग किया जाता है।
+    </li>
+
+    <li>
+      मेरे द्वारा आवेदन पत्र के साथ आवश्यक दस्तावेज विज्ञप्ति एवं
+      विभागीय परिपत्र संख्या 4244 दिनांक 12.01.2023 में दिये गये
+      दिशा-निर्देशों एवं इनमें संशोधन क्रमांक 57871-58286 दिनांक
+      01.03.2024 के अनुसार संलग्न कर दिये गये हैं तथा आवेदन देने की
+      अंतिम तिथि के उपरांत किसी भी प्रकार के संशोधन का अनुरोध नहीं
+      करूंगी।
+    </li>
+
+    <li>
+      मेरे पति की मृत्यु दिनांक ______ को हो चुकी है / मैं दिनांक
+      ______ से तलाकशुदा हूँ तथा मैंने पुनर्विवाह नहीं किया है।
+      मैंने सक्षम स्तर से जारी प्रमाण पत्र संलग्न कर दिया है।
+      <br>
+      <span style="font-size:11px;font-style:italic">
+        (लागू होने पर ही भरा जाये)
+      </span>
+    </li>
+
+    <li>
+      आवेदिका के अविवाहित होने की दशा में उद्घोषणा करती हूँ कि मानदेय
+      कार्मिक पर चयन होने / कार्यरत रहने के उपरांत यदि मैं विवाहित होने
+      अथवा अन्य कारणों से स्थानीय निवासी नहीं रहती हूँ तो मेरी
+      मानदेय सेवाएँ स्वतः ही समाप्त मानी जायेंगी।
+    </li>
+
+    <li>
+      मैं ____________________ शपथपूर्वक घोषणा करती हूँ कि आवेदन पत्र में दी गई समस्त
+      जानकारी / सूचनाएँ मेरी जानकारी अनुसार सत्य एवं पूर्ण हैं।
+      मैंने कोई भी सूचना नहीं छिपाई है। यदि दी गई जानकारी असत्य अथवा
+      अप्रमाणिक पाई जाती है तो मेरा आवेदन निरस्त होने पर मैं व्यक्तिगत
+      रूप से उत्तरदायी रहूँगी तथा भविष्य में चयन हेतु अपात्र मानी
+      जाऊँगी।
+    </li>
+  </ol>
+
+  <br>
+
+  <div style="margin-top:30px;font-size:13px">
+    <div style="float:left">
+      स्थान: ____________________
+    </div>
+
+    <div style="float:right;text-align:center">
+      आवेदिका के हस्ताक्षर<br><br>
+      ____________________
+    </div>
+
+    <div style="clear:both;margin-top:20px">
+      दिनांक: ____________________
+    </div>
+  </div>
+
+</div>
+`;
+
+// ================= USER RECEIPT =================
+const userReceipt = `
+<div style="page-break-before:always;font-size:13px">
+
+  <div style="border-top:1px dashed #000;margin-bottom:10px;padding-top:6px;font-size:11px;text-align:center">
+    (यहाँ से फाड़ कर एक रसीद आवेदनकर्ता को दी जाये तथा आवेदन पत्र प्राप्ति की एक रसीद कार्यालय उपयोग हेतु)
+    <hr style="border: none; border-top: 3px dotted #333; background-color: transparent; height: 1px;">
+  </div>
+
+  <div style="line-height:1.8">
+    श्रीमती / सुश्री&nbsp;
+    <strong>${escapeHtml(data.applicant_name || '________________')}</strong>
+
+
+    पत्नी / पुत्री श्री&nbsp;
+    <strong>${escapeHtml(
+      data.husband_name || data.father_name || '________________'
+    )}</strong>
+
+    निवासी&nbsp;
+    <strong>${escapeHtml(data.address || '________________')}</strong>
+
+    से आंगनबाड़ी केन्द्र&nbsp;
+    <strong>${escapeHtml(data.center_name || '________________')}</strong>
+
+
+    के लिए मानदेय सेवा पद&nbsp;
+    <strong>${escapeHtml(data.post_name || '________________')}</strong>
+
+    हेतु आवेदन पत्र मय निम्नलिखित संलग्नों पृष्ठ संख्या&nbsp;
+    <strong>(........................)</strong>
+
+    <br>
+    सहित दिनांक&nbsp;
+    <strong> ........... को .............</strong>
+    &nbsp; बजे प्राप्त किया गया।
+  </div>
+  <br>
+  </div>
+
+</div>
+`;
+
+  // ================= PRINT TICK / CROSS TABLE =================
+const docLabelsPrint = {
+  1:'सैकण्डरी प्रमाण पत्र',
+  2:'हायर सैकण्डरी प्रमाण पत्र',
+  3:'स्नातक प्रमाण पत्र',
+  4:'स्नातकोत्तर प्रमाण पत्र',
+  5:'स्थानीय निवासी',
+  6:'SC/ST/अल्पसंख्यक',
+  7:'OBC',
+  8:'EWS',
+  9:'आदिम व घुमन्तु',
+  10:'दिव्यांग',
+  11:'GNM/ANM',
+  12:'RSCIT',
+  13:'अनुभव',
+  14:'NTT',
+  15:'विधवा/तलाकशुदा',
+  16:'अन्य'
+};
+
+let docsPrintHtml = `
+<div style="font-weight:700;">
+  संलग्न दस्तावेज (प्राप्ति विवरण)
+</div>
+
+<table style="width:100%;font-size:13px;border-collapse:collapse">
+<thead>
+<tr style="background:#f3f4f6">
+  <th style="border:1px solid #000;padding:6px">क्रम</th>
+  <th style="border:1px solid #000;padding:6px">दस्तावेज</th>
+  <th style="border:1px solid #000;padding:6px">हाँ</th>
+  <th style="border:1px solid #000;padding:6px">नहीं</th>
+</tr>
+</thead>
+<tbody>
+`;
+
+for (let i = 1; i <= 16; i++) {
+  const status = data['doc' + i];
+
+  docsPrintHtml += `
+  <tr>
+    <td style="border:1px solid #000;padding:6px;text-align:center">${i}</td>
+
+    <td style="border:1px solid #000;padding:6px">
+      ${docLabelsPrint[i]}
+      ${
+        i === 5
+          ? `
+          <div style="font-size:11px;margin-top:6px;line-height:1.4;color:#333">
+            <strong>(निम्नलिखित में से कोई दस्तावेज प्राप्त हुए)</strong><br>
+            ☐ मतदाता पहचान पत्र<br>
+            ☐ राशन कार्ड<br>
+            ☐ आधार कार्ड<br>
+            ☐ जन आधार कार्ड<br>
+            <span style="margin-left:16px">
+              संलग्न पृष्ठ संख्या: (................)
+            </span>
+          </div>
+          `
+          : ''
+      }
+    </td>
+
+    <td style="border:1px solid #000;padding:6px;text-align:center;font-size:16px">
+      ${status === 'yes' ? '✔' : ''}
+    </td>
+
+    <td style="border:1px solid #000;padding:6px;text-align:center;font-size:16px">
+      ${status === 'no' ? '✖' : ''}
+    </td>
+  </tr>
+  `;
+}
+
+docsPrintHtml += `
+</tbody>
+</table><br>
+`;
+
+  // ================= SIGN =================
+ const sign = `
+<div style="margin-top:24px;font-size:13px;width:100%;">
+
+  <!-- LEFT SIDE -->
+  <div style="float:left;text-align:left;">
+    <div style="margin-bottom:12px;">
+      हस्ताक्षर (आवेदन जमा कराने वाले के)
+    </div>
+    <div>
+      दिनांक एवं समय: ...............
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div style="float:right;text-align:left;">
+    <div style="margin-top:12px;">
+      हस्ताक्षर (प्राप्तकर्ता)
+    </div>
+  </div>
+
+  <div style="clear:both;"></div>
+</div>
+`;
+
+
+  // ================= FINAL RENDER =================
+  printable.innerHTML =
+    header + fixed + personal + caste +
+    eduTable + exp + docsHtml + declaration + userReceipt + docsPrintHtml + sign;
+
+  printable.style.display = 'block';
+
+  html2pdf().set({
+    margin: 4,
+    filename: 'Aanganwadi_Application.pdf',
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4' }
+  }).from(printable).save().then(() => {
+    printable.style.display = 'none';
+  });
+}
+
+const REF_DATE = new Date(); // today
+
+document.getElementById('dob').addEventListener('change', function () {
+  const dobVal = this.value;
+  if (!dobVal) return;
+
+  const dob = new Date(dobVal);
+
+  let years = REF_DATE.getFullYear() - dob.getFullYear();
+  let months = REF_DATE.getMonth() - dob.getMonth();
+  let days = REF_DATE.getDate() - dob.getDate();
+
+  // adjust days
+  if (days < 0) {
+    months--;
+    const prevMonth = new Date(
+      REF_DATE.getFullYear(),
+      REF_DATE.getMonth(),
+      0
+    ).getDate();
+    days += prevMonth;
+  }
+
+  // adjust months
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  // set values
+  document.getElementById('age_years').value = years;
+  document.getElementById('age_months').value = months;
+});
+
+
+/* -------------------------
+   Startup
+------------------------- */
+loadSaved();
+showStep(1);
+
+// ensure save on leaving
+window.addEventListener('beforeunload', saveDataToLocal);
+</script>
+
+</body>
+</html>
