@@ -494,7 +494,7 @@
     <div class="nav">
       <button type="button" class="btn ghost" onclick="prevStep(5)">‹ Back</button>
       <div style="margin-left:auto">
-        <button type="button" class="btn primary" onclick="confirmAndGenerate()">PDF डाउनलोड करें</button>
+        <button type="button" class="btn primary" onclick="generatePDF()">PDF डाउनलोड करें</button>
       </div>
     </div>
   </div>
@@ -540,26 +540,26 @@ function nextStep(n){
   showStep(Math.min(totalSteps, n+1));
 }
   
-function confirmAndGenerate() {
-  const proceed = confirm("फॉर्म भर दिया गया है। दस्तावेज़ जोड़ने के लिए आगे बढ़ें?");
-  if(!proceed) return;
+// function confirmAndGenerate() {
+//   const proceed = confirm("फॉर्म भर दिया गया है। दस्तावेज़ जोड़ने के लिए आगे बढ़ें?");
+//   if(!proceed) return;
 
-  const printable = document.getElementById('printable');
+//   const printable = document.getElementById('printable');
 
-  html2pdf()
-    .set({
-      margin: 10,
-      filename: 'aanganwadi_form.pdf',
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    })
-    .from(printable)
-    .save()
-    .then(() => {
-      // Redirect only after PDF is saved
-      window.location.href = "coloectDocs.html";
-    });
-}
+//   html2pdf()
+//     .set({
+//       margin: 10,
+//       filename: 'aanganwadi_form.pdf',
+//       html2canvas: { scale: 2 },
+//       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+//     })
+//     .from(printable)
+//     .save()
+//     .then(() => {
+//       // Redirect only after PDF is saved
+//       window.location.href = "coloectDocs.html";
+//     });
+// }
 /* -------------------------
    Validation per step
 ------------------------- */
