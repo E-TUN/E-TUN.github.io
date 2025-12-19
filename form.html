@@ -494,7 +494,7 @@
     <div class="nav">
       <button type="button" class="btn ghost" onclick="prevStep(5)">‹ Back</button>
       <div style="margin-left:auto">
-        <button type="button" class="btn primary" onclick="generatePDF()">PDF डाउनलोड करें</button>
+        <button type="button" class="btn primary" onclick="confirmAndGenerate()">PDF डाउनलोड करें</button>
       </div>
     </div>
   </div>
@@ -540,6 +540,18 @@ function nextStep(n){
   showStep(Math.min(totalSteps, n+1));
 }
 
+async function confirmAndGenerate() {
+  // Show confirmation popup
+  const proceed = confirm("फॉर्म भर दिया गया है। दस्तावेज़ जोड़ने के लिए आगे बढ़ें?");
+  if(!proceed) return; // user cancelled
+
+  // Generate PDF
+  await generatePDF();
+
+  // After PDF download, redirect user to another page
+  // Replace 'document_collected.html' with your actual page
+  window.location.href = "coloectDocs.html";
+}
 /* -------------------------
    Validation per step
 ------------------------- */
