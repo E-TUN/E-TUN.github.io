@@ -539,18 +539,26 @@ function nextStep(n){
   if(!validateStep(n)) return;
   showStep(Math.min(totalSteps, n+1));
 }
-
-async function confirmAndGenerate() {
-  // Show confirmation popup
+  
+function confirmAndGenerate() {
   const proceed = confirm("फॉर्म भर दिया गया है। दस्तावेज़ जोड़ने के लिए आगे बढ़ें?");
-  if(!proceed) return; // user cancelled
+  if(!proceed) return;
 
-  // Generate PDF
-  await generatePDF();
+  const printable = document.getElementById('printable');
 
-  // After PDF download, redirect user to another page
-  // Replace 'document_collected.html' with your actual page
-  window.location.href = "coloectDocs.html";
+  html2pdf()
+    .set({
+      margin: 10,
+      filename: 'aanganwadi_form.pdf',
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    })
+    .from(printable)
+    .save()
+    .then(() => {
+      // Redirect only after PDF is saved
+      window.location.href = "coloectDocs.html";
+    });
 }
 /* -------------------------
    Validation per step
