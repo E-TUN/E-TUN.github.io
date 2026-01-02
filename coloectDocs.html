@@ -25,15 +25,21 @@ th,td{
   padding:6px;
   font-size:14px
 }
-th{
-  background:#eee
-}
+th{background:#eee}
 .center{text-align:center}
 .hidden{display:none}
 button{
   padding:10px 20px;
   font-size:15px;
   cursor:pointer
+}
+.plus{
+  font-size:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.subRow td{
+  background:#fafafa;
 }
 </style>
 </head>
@@ -57,27 +63,27 @@ button{
 </table>
 </div>
 
-<!-- ===== LOCAL RESIDENT SUB DOCUMENTS ===== -->
+<!-- ===== LOCAL RESIDENT ===== -->
 <div class="card hidden" id="localBox">
 <b>स्थानीय निवासी (कोई 2 अनिवार्य)</b><br><br>
 
 <label>
-<input type="checkbox" class="localChk" data-i="0"> मतदाता पहचान पत्र
+<input type="checkbox" class="localChk"> मतदाता पहचान पत्र
 <input type="file" class="localFile hidden">
 </label><br><br>
 
 <label>
-<input type="checkbox" class="localChk" data-i="1"> राशन कार्ड
+<input type="checkbox" class="localChk"> राशन कार्ड
 <input type="file" class="localFile hidden">
 </label><br><br>
 
 <label>
-<input type="checkbox" class="localChk" data-i="2"> आधार कार्ड
+<input type="checkbox" class="localChk"> आधार कार्ड
 <input type="file" class="localFile hidden">
 </label><br><br>
 
 <label>
-<input type="checkbox" class="localChk" data-i="3"> जन आधार कार्ड
+<input type="checkbox" class="localChk"> जन आधार कार्ड
 <input type="file" class="localFile hidden">
 </label>
 </div>
@@ -91,153 +97,176 @@ button{
 <script>
 const { jsPDF } = window.jspdf;
 
-/* ===== DOCUMENT LIST (16) ===== */
 const documents = [
-  "अधिकतम शैक्षणिक योग्यता सम्बन्धी अंकतालिका/प्रमाण पत्र",
-  "NCTE मान्यता प्राप्त द्विवर्षीय NTT/DPSE/Bed/D.EL.Ed",
-  "सैकण्डरी की अंकतालिका/प्रमाण पत्र",
-  "हायर सैकण्डरी की अंकतालिका/प्रमाण पत्र",
-  "स्थानीय निवासी प्रमाण पत्र",
-  "अनुसूचित जाति/जनजाति/अल्पसंख्यक प्रमाण पत्र",
-  "पिछड़ा वर्ग (OBC) प्रमाण पत्र",
-  "EWS प्रमाण पत्र",
-  "आदिम व घुमन्तु जाति प्रमाण पत्र",
-  "दिव्यांग जन प्रमाण पत्र",
-  "GNM/ANM/Nursing प्रमाण पत्र",
-  "RSCIT / PGDCA प्रमाण पत्र",
-  "आंगनबाडी अनुभव प्रमाण पत्र",
-  "NCTE मान्यता प्राप्त NTT/DPSE/AB Ed/E EL Ed",
-  "विधवा/तलाकशुदा प्रमाण पत्र",
-  "अन्य"
+ "अधिकतम शैक्षणिक योग्यता सम्बन्धी अंकतालिका/प्रमाण पत्र",
+ "NCTE मान्यता प्राप्त द्विवर्षीय NTT/DPSE/Bed/D.EL.Ed",
+ "सैकण्डरी की अंकतालिका/प्रमाण पत्र",
+ "हायर सैकण्डरी की अंकतालिका/प्रमाण पत्र",
+ "स्थानीय निवासी प्रमाण पत्र",
+ "अनुसूचित जाति/जनजाति/अल्पसंख्यक प्रमाण पत्र",
+ "पिछड़ा वर्ग (OBC) प्रमाण पत्र",
+ "EWS प्रमाण पत्र",
+ "आदिम व घुमन्तु जाति प्रमाण पत्र",
+ "दिव्यांग जन प्रमाण पत्र",
+ "GNM/ANM/Nursing प्रमाण पत्र",
+ "RSCIT / PGDCA प्रमाण पत्र",
+ "आंगनबाडी अनुभव प्रमाण पत्र",
+ "NCTE मान्यता प्राप्त NTT/DPSE/AB Ed/E EL Ed",
+ "विधवा/तलाकशुदा प्रमाण पत्र",
+ "अन्य"
 ];
 
-/* ===== CREATE TABLE ===== */
 const tbody = document.getElementById("docTable");
+let otherIndex = 0;
 
 documents.forEach((doc,i)=>{
- tbody.innerHTML += `
- <tr>
+ const isOther = doc === "अन्य";
+
+ tbody.insertAdjacentHTML("beforeend",`
+ <tr id="row${i}">
   <td class="center">${i+1}</td>
-  <td>${doc}</td>
+
+  <td>
+    ${
+      isOther
+      ? `अन्य, इनके अलावा यदि आप अन्य दस्तावेज़ जोड़ना चाहते हैं
+         <span class="plus" onclick="addOther()"> ➕</span>`
+      : doc
+    }
+  </td>
+
   <td class="center">
-    <input type="radio" name="doc${i}" value="yes" onchange="docYes(${i})">
+    ${isOther ? `` :
+      `<input type="radio" name="doc${i}" value="yes"
+        onchange="docYes(${i})">`
+    }
+  </td>
+
+  <td class="center">
+    ${isOther ? `` :
+      `<input type="radio" name="doc${i}" value="no"
+        onchange="docNo(${i})">`
+    }
+  </td>
+
+  <td>
+    ${isOther ? `` :
+      <input type="file" id="file${i}" class="hidden">
+    }
+  </td>
+ </tr>
+ `);
+});
+
+/* YES / NO */
+function docYes(i){
+ if(i===4){
+  document.getElementById("localBox").classList.remove("hidden");
+ }else{
+  document.getElementById("file"+i).classList.remove("hidden");
+ }
+}
+function docNo(i){
+ if(i===4){
+  document.getElementById("localBox").classList.add("hidden");
+ }else{
+  document.getElementById("file"+i).classList.add("hidden");
+  document.getElementById("file"+i).value="";
+ }
+}
+
+/* ===== ADD OTHER SUB DOCUMENT ===== */
+function addOther(){
+ const name = prompt("जिस दस्तावेज़ को जोड़ना चाहते हैं उसका नाम लिखें");
+ if(!name) return;
+
+ const id = other_${otherIndex++};
+ document.getElementById("row15").insertAdjacentHTML("afterend",`
+ <tr class="subRow">
+  <td></td>
+  <td>${name}</td>
+  <td class="center">
+    <input type="radio" name="${id}" value="yes" onchange="toggleFile('${id}',true)">
   </td>
   <td class="center">
-    <input type="radio" name="doc${i}" value="no" onchange="docNo(${i})">
+    <input type="radio" name="${id}" value="no" onchange="toggleFile('${id}',false)">
   </td>
   <td>
-    <input type="file" id="file${i}" class="hidden">
+    <input type="file" id="file_${id}" class="hidden">
   </td>
- </tr>`;
-});
-
-/* ===== YES / NO LOGIC ===== */
-function docYes(i){
-  if(i !== 4){
-    document.getElementById("file"+i).classList.remove("hidden");
-  }
-  if(i === 4){
-    document.getElementById("localBox").classList.remove("hidden");
-  }
+ </tr>
+ `);
 }
 
-function docNo(i){
-  if(i !== 4){
-    document.getElementById("file"+i).classList.add("hidden");
-  }
-  if(i === 4){
-    document.getElementById("localBox").classList.add("hidden");
-
-    // reset local checkboxes & files
-    localChk.forEach((chk, idx)=>{
-      chk.checked = false;
-      localFile[idx].classList.add("hidden");
-      localFile[idx].value = "";
-    });
-  }
+function toggleFile(id,show){
+ const f = document.getElementById("file_"+id);
+ f.classList.toggle("hidden",!show);
+ if(!show) f.value="";
 }
 
-/* ===== LOCAL RESIDENT LOGIC (ONLY 2) ===== */
-const localChk = document.querySelectorAll(".localChk");
-const localFile = document.querySelectorAll(".localFile");
+/* ===== LOCAL LOGIC ===== */
+const localChk=document.querySelectorAll(".localChk");
+const localFile=document.querySelectorAll(".localFile");
 
-localChk.forEach((chk, i)=>{
-  chk.addEventListener("change",()=>{
-    const checked = [...localChk].filter(x=>x.checked);
-    if(checked.length > 2){
-      chk.checked = false;
-      alert("केवल 2 दस्तावेज चुनें");
-      return;
-    }
-    localFile[i].classList.toggle("hidden", !chk.checked);
-
-    if(!chk.checked){
-      localFile[i].value = "";
-    }
-  });
+localChk.forEach((c,i)=>{
+ c.onchange=()=>{
+  const sel=[...localChk].filter(x=>x.checked);
+  if(sel.length>4){
+   c.checked=false;
+   alert("");
+   return;
+  }
+  localFile[i].classList.toggle("hidden",!c.checked);
+ };
 });
 
-/* ===== PDF GENERATION ===== */
+/* ===== PDF ===== */
 async function generatePDF(){
-  const pdf = new jsPDF();
-  let pageNo = 1;
+ const pdf=new jsPDF();
+ let page=1;
 
-  for(let i=0;i<documents.length;i++){
-    const yes = document.querySelector(`input[name=doc${i}][value=yes]`);
-    if(!yes || !yes.checked) continue;
-
-    // ===== 5th document special handling =====
-    if(i === 4){
-      const selected = [];
-      localChk.forEach((chk, idx)=>{
-        if(chk.checked){
-          selected.push({file: localFile[idx].files[0], name: chk.parentElement.innerText.trim()});
-        }
-      });
-
-      if(selected.length !== 2){
-        alert("स्थानीय निवासी हेतु 2 दस्तावेज अनिवार्य हैं");
-        return;
-      }
-
-      for(const doc of selected){
-        if(!doc.file){
-          alert("स्थानीय निवासी दस्तावेज अपलोड करें");
-          return;
-        }
-        await addImage(pdf, doc.file, pageNo++);
-      }
-
-      continue;
-    }
-
-    // ===== All other documents =====
-    const file = document.getElementById("file"+i).files[0];
-    if(!file){
-      alert("सभी चयनित दस्तावेज अपलोड करें");
-      return;
-    }
-    await addImage(pdf, file, pageNo++);
+ // main docs
+ for(let i=0;i<documents.length;i++){
+  if(i===4){
+   const sel=[];
+   localChk.forEach((c,idx)=>{
+    if(c.checked && localFile[idx].files[0])
+     sel.push(localFile[idx].files[0]);
+   });
+   if(sel.length!==2){alert("स्थानीय निवासी के 2 दस्तावेज अनिवार्य");return;}
+   for(const f of sel) await add(pdf,f,page++);
+   continue;
   }
 
-  pdf.save("documents.pdf");
+  const yes=document.querySelector(input[name=doc${i}][value=yes]);
+  if(yes?.checked){
+   const f=document.getElementById("file"+i).files[0];
+   if(!f){alert("सभी चयनित दस्तावेज अपलोड करें");return;}
+   await add(pdf,f,page++);
+  }
+ }
+
+ // other docs
+ document.querySelectorAll("[id^=file_other_]").forEach(async f=>{
+  if(f.files[0]) await add(pdf,f.files[0],page++);
+ });
+
+ pdf.save("documents.pdf");
 }
 
-/* ===== ADD IMAGE + PAGE NUMBER ===== */
-async function addImage(pdf,file,pageNo){
-  const img = await readFile(file);
-  pdf.addImage(img,"JPEG",10,10,190,260);
-  pdf.text(`Page No. ${pageNo}`,105,290,{align:"center"});
-  pdf.addPage();
+async function add(pdf,file,page){
+ const img=await read(file);
+ pdf.addImage(img,"JPEG",10,10,190,260);
+ pdf.text(Page No. ${page},105,290,{align:"center"});
+ pdf.addPage();
 }
 
-/* ===== FILE READER ===== */
-function readFile(f){
-  return new Promise(r=>{
-    const fr = new FileReader();
-    fr.onload = e => r(e.target.result);
-    fr.readAsDataURL(f);
-  });
+function read(f){
+ return new Promise(r=>{
+  const fr=new FileReader();
+  fr.onload=e=>r(e.target.result);
+  fr.readAsDataURL(f);
+ });
 }
 </script>
 
