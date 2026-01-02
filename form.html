@@ -994,18 +994,37 @@ for (let i = 1; i <= 16; i++) {
   if (i === 5) {
     docsHtml += `
       <tr>
-        <td colspan="4" style="border:1px solid #000;padding:6px;font-size:12px;">
-          (अपने जमा किए गए दस्तावेज़ पर एक छोटा सा निशान लगाएँ।):
-          <ul style="margin:4px 0 4px 20px;padding:0">
-           <li>मतदाता पहचान पत्र .......... ☐</li>
-            <li>राशन कार्ड .......... ☐</li>
-            <li>आधार कार्ड .......... ☐</li>
-            <li>जनआधार कार्ड .......... ☐</li>
-            <li>मूल निवास प्रमाण पत्र .......... ☐</li>
-            <li>विवाह पंजीयन प्रमाण पत्र .......... ☐</li>
-          </ul>
-        </td>
-      </tr>
+       <td style="border:1px solid #000;padding:6px;font-size:12px;">
+  <b>(अपने जमा किए गए दस्तावेज़ पर एक छोटा सा निशान लगाएँ।)</b>
+
+  <table style="width:100%;border-collapse:collapse;margin-top:6px;">
+    <tr>
+      <td style="width:85%;">मतदाता पहचान पत्र</td>
+      <td style="width:15%;text-align:center;">☐</td>
+    </tr>
+    <tr>
+      <td>राशन कार्ड</td>
+      <td style="text-align:center;">☐</td>
+    </tr>
+    <tr>
+      <td>आधार कार्ड</td>
+      <td style="text-align:center;">☐</td>
+    </tr>
+    <tr>
+      <td>जनआधार कार्ड</td>
+      <td style="text-align:center;">☐</td>
+    </tr>
+    <tr>
+      <td>मूल निवास प्रमाण पत्र</td>
+      <td style="text-align:center;">☐</td>
+    </tr>
+    <tr>
+      <td>विवाह पंजीयन प्रमाण पत्र</td>
+      <td style="text-align:center;">☐</td>
+    </tr>
+  </table>
+</td>
+</tr>
     `;
   }
   if (i === 16 && Array.isArray(otherDocs) && otherDocs.length) {
