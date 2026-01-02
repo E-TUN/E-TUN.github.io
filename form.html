@@ -993,29 +993,20 @@ for (let i = 1; i <= 16; i++) {
   // Add sublist for doc 5 (स्थानीय निवासी) manually
   if (i === 5) {
     docsHtml += `
-      <tr>
-       <td style="border:1px solid #000;padding:6px;font-size:12px;">
-  <b>(अपने जमा किए गए दस्तावेज़ पर एक छोटा सा निशान लगाएँ।)</b>
+     <tr>
+        <td colspan="4" style="border:1px solid #000;padding:6px;font-size:12px;">
+          (अपने जमा किए गए दस्तावेज़ पर एक छोटा सा निशान लगाएँ।):
+          <ul style="margin:4px 0 4px 20px;padding:0">
+           <li>मतदाता पहचान पत्र .......... ☐ </li>
+            <li>राशन कार्ड .......... ☐</li>
+            <li>आधार कार्ड .......... ☐</li>
+            <li>जनआधार कार्ड .......... ☐</li>
+            <li>मूल निवास प्रमाण पत्र .......... ☐</li>
+            <li>विवाह पंजीयन प्रमाण पत्र .......... ☐</li>
+          </ul>
+        </td>
+      </tr>
 
-  <table style="width:100%;border-collapse:collapse;margin-top:6px;">
-    <td style="border:1px solid #000;
-           padding:6px;
-           font-size:12px;
-           font-family:'Courier New',monospace;
-           white-space:pre;">
-(अपने जमा किए गए दस्तावेज़ पर एक छोटा सा निशान लगाएँ।)
-
-मतदाता पहचान पत्र        ____________________  [  ]
-राशन कार्ड               ____________________  [  ]
-आधार कार्ड               ____________________  [  ]
-जनआधार कार्ड             ____________________  [  ]
-मूल निवास प्रमाण पत्र     ____________________  [  ]
-विवाह पंजीयन प्रमाण पत्र  ____________________  [  ]
-</td>
-
-  </table>
-</td>
-</tr>
     `;
   }
   if (i === 16 && Array.isArray(otherDocs) && otherDocs.length) {
