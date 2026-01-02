@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -151,7 +152,7 @@ documents.forEach((doc,i)=>{
 
   <td>
     ${isOther ? `` :
-      <input type="file" id="file${i}" class="hidden">
+      `<input type="file" id="file${i}" class="hidden">`
     }
   </td>
  </tr>
@@ -180,7 +181,7 @@ function addOther(){
  const name = prompt("जिस दस्तावेज़ को जोड़ना चाहते हैं उसका नाम लिखें");
  if(!name) return;
 
- const id = other_${otherIndex++};
+ const id = `other_${otherIndex++}`;
  document.getElementById("row15").insertAdjacentHTML("afterend",`
  <tr class="subRow">
   <td></td>
@@ -238,7 +239,7 @@ async function generatePDF(){
    continue;
   }
 
-  const yes=document.querySelector(input[name=doc${i}][value=yes]);
+  const yes=document.querySelector(`input[name=doc${i}][value=yes]`);
   if(yes?.checked){
    const f=document.getElementById("file"+i).files[0];
    if(!f){alert("सभी चयनित दस्तावेज अपलोड करें");return;}
@@ -257,7 +258,7 @@ async function generatePDF(){
 async function add(pdf,file,page){
  const img=await read(file);
  pdf.addImage(img,"JPEG",10,10,190,260);
- pdf.text(Page No. ${page},105,290,{align:"center"});
+ pdf.text(`Page No. ${page}`,105,290,{align:"center"});
  pdf.addPage();
 }
 
