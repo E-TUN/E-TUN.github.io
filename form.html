@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -501,7 +503,7 @@
       <div style="margin-left:auto">
         <button type="button" class="btn primary" onclick="generatePDF()">FORM PDF डाउनलोड करें</button>
         <br><br><br>
-        <a href="coloectDocs.html" class="btn primary">
+        <a href="#step-4" class="btn primary">
   दस्तावेज़ जोड़ें
 </a>
 
@@ -755,7 +757,7 @@ function buildReview(){
     const label = f[0], key = f[1];
     let val = data[key] || '';
     if(Array.isArray(val)) val = val.join(', ');
-    html += <tr><td style="padding:6px;border-bottom:1px solid #eee;font-weight:600">${label}</td><td style="padding:6px;border-bottom:1px solid #eee">${escapeHtml(val)}</td></tr>;
+    html += `<tr><td style="padding:6px;border-bottom:1px solid #eee;font-weight:600">${label}</td><td style="padding:6px;border-bottom:1px solid #eee">${escapeHtml(val)}</td></tr>`;
   });
   html += '</tbody></table>';
   document.getElementById('reviewArea').innerHTML = html;
@@ -775,7 +777,7 @@ function collectEducationRowsHTML(){
     const board = document.getElementById('edu_board_'+i)?.value || '';
     const year = document.getElementById('edu_year_'+i)?.value || '';
     const cls = ['सैकण्डरी','हायर सैकण्डरी','स्नातक','स्नातकोत्तर','NTT/DPSC/B.Ed','कम्प्यूटर कोर्स','G.N.M.','A.N.M.','अन्य'][i];
-    rows += <tr><td style="padding:6px;border:1px solid #ddd">${i+1}</td><td style="padding:6px;border:1px solid #ddd">${cls}</td><td style="padding:6px;border:1px solid #ddd">${escapeHtml(board)}</td><td style="padding:6px;border:1px solid #ddd">${escapeHtml(year)}</td></tr>;
+    rows += `<tr><td style="padding:6px;border:1px solid #ddd">${i+1}</td><td style="padding:6px;border:1px solid #ddd">${cls}</td><td style="padding:6px;border:1px solid #ddd">${escapeHtml(board)}</td><td style="padding:6px;border:1px solid #ddd">${escapeHtml(year)}</td></tr>`;
   }
   return rows;
 }
@@ -1012,7 +1014,7 @@ for (let i = 1; i <= 16; i++) {
       <td colspan="4" style="border:1px solid #000;padding:6px;font-size:12px">
         <strong>अन्य संलग्न दस्तावेज:</strong>
         <ul style="margin:4px 0 0 18px">
-          ${otherDocs.map(d => <li>${escapeHtml(d)}</li>).join('')}
+          ${otherDocs.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
         </ul>
       </td>
     </tr>
@@ -1055,8 +1057,8 @@ const declaration = `
     </li>
 
     <li>
-      मेरे पति की मृत्यु दिनांक __ को हो चुकी है / मैं दिनांक
-      __ से तलाकशुदा हूँ तथा मैंने पुनर्विवाह नहीं किया है।
+      मेरे पति की मृत्यु दिनांक ______ को हो चुकी है / मैं दिनांक
+      ______ से तलाकशुदा हूँ तथा मैंने पुनर्विवाह नहीं किया है।
       मैंने सक्षम स्तर से जारी प्रमाण पत्र संलग्न कर दिया है।
       <br>
       <span style="font-size:11px;font-style:italic">
@@ -1072,7 +1074,7 @@ const declaration = `
     </li>
 
     <li>
-      मैं ________ शपथपूर्वक घोषणा करती हूँ कि आवेदन पत्र में दी गई समस्त
+      मैं ____________________ शपथपूर्वक घोषणा करती हूँ कि आवेदन पत्र में दी गई समस्त
       जानकारी / सूचनाएँ मेरी जानकारी अनुसार सत्य एवं पूर्ण हैं।
       मैंने कोई भी सूचना नहीं छिपाई है। यदि दी गई जानकारी असत्य अथवा
       अप्रमाणिक पाई जाती है तो मेरा आवेदन निरस्त होने पर मैं व्यक्तिगत
@@ -1085,16 +1087,16 @@ const declaration = `
 
   <div style="margin-top:30px;font-size:13px">
     <div style="float:left">
-      स्थान: ________
+      स्थान: ____________________
     </div>
 
     <div style="float:right;text-align:center">
       आवेदिका के हस्ताक्षर<br><br>
-      ________
+      ____________________
     </div>
 
     <div style="clear:both;margin-top:20px">
-      दिनांक: ________
+      दिनांक: ____________________
     </div>
   </div>
 
@@ -1112,23 +1114,23 @@ const userReceipt = `
 
   <div style="line-height:1.8">
     श्रीमती / सुश्री&nbsp;
-    <strong>${escapeHtml(data.applicant_name || '______')}</strong>
+    <strong>${escapeHtml(data.applicant_name || '________________')}</strong>
 
 
     पत्नी / पुत्री श्री&nbsp;
     <strong>${escapeHtml(
-      data.husband_name || data.father_name || '______'
+      data.husband_name || data.father_name || '________________'
     )}</strong>
 
     निवासी&nbsp;
-    <strong>${escapeHtml(data.address || '______')}</strong>
+    <strong>${escapeHtml(data.address || '________________')}</strong>
 
     से आंगनबाड़ी केन्द्र&nbsp;
-    <strong>${escapeHtml(data.center_name || '______')}</strong>
+    <strong>${escapeHtml(data.center_name || '________________')}</strong>
 
 
     के लिए मानदेय सेवा पद&nbsp;
-    <strong>${escapeHtml(data.post_name || '______')}</strong>
+    <strong>${escapeHtml(data.post_name || '________________')}</strong>
 
     हेतु आवेदन पत्र मय निम्नलिखित संलग्नों पृष्ठ संख्या&nbsp;
     <strong>(........................)</strong>
@@ -1208,7 +1210,7 @@ for (let i = 1; i <= 16; i++) {
         i === 16 && otherDocs.length
           ? `
           <div style="font-size:12px;margin-top:4px">
-            ${otherDocs.map(d => • ${escapeHtml(d)}).join('<br>')}
+            ${otherDocs.map(d => `• ${escapeHtml(d)}`).join('<br>')}
           </div>
           `
           : ''
