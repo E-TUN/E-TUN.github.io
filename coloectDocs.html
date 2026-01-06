@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -67,8 +66,8 @@ button:disabled{background:#94a3b8;cursor:not-allowed}
 
 <!-- LOCAL -->
 <div class="card hidden" id="localBox">
-<b>स्थानीय निवासी (कोई 2 अनिवार्य)</b>
-<div id="localError" style="color:red;display:none">⚠ दस्तावेज अपलोड करें</div><br>
+<b>स्थानीय निवासी (कम से कम 2 अनिवार्य)</b>
+<div id="localError" style="color:red;display:none"></div><br>
 
 <label><input type="checkbox" class="localChk"> मतदाता पहचान पत्र
 <input type="file" class="localFile hidden" accept="image/jpeg,image/png"></label><br><br>
@@ -138,8 +137,8 @@ localChk.forEach((c,i)=>{
 
 function validateLocal(){
  const files = localFile.filter(f=>f.files.length>0);
- localError.style.display = files.length<2?"block":"none";
- pdfBtn.disabled = files.length<2;
+ localError.style.display = files.length < 1 ? "block" : "none";
+ pdfBtn.disabled = false;
 }
 
 /* ===== DOC ===== */
@@ -184,15 +183,15 @@ function addOther(){
 async function generatePDF(){
  let errors = [];
 
- // Local resident check
+ // Local resident check (ONLY 1 REQUIRED)
  const localFiles = localFile.filter(f => f.files.length>0);
  if(localFiles.length < 1){
-  errors.push("स्थानीय निवासी के 1 दस्तावेज अपलोड करें");
+  errors.push("स्थानीय निवासी अपलोड करें");
  }
 
  // Main document check
  docs.forEach((_, i) => {
-  if(i===4 || i===15) return; // skip local + अन्य
+  if(i===4 || i===15) return;
 
   const yes = document.querySelector(`input[name="doc${i}"]:checked`);
   if(yes && yes.value === "yes"){
@@ -208,7 +207,6 @@ async function generatePDF(){
   return;
  }
 
- // Start PDF
  const pdf = new jsPDF({orientation:"p", unit:"mm", format:"a4", compress:false});
  let pageNum = 1;
  let first = true;
@@ -227,22 +225,15 @@ async function generatePDF(){
 
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
-
-            // proportional scaling
             const ratio = Math.min(pdfWidth / img.width, pdfHeight / img.height);
+
             const finalWidth = img.width * ratio;
             const finalHeight = img.height * ratio;
-
             const x = (pdfWidth - finalWidth)/2;
             const y = (pdfHeight - finalHeight)/2;
 
             pdf.addImage(imgData, "JPEG", x, y, finalWidth, finalHeight);
-
-            // page number
-            pdf.setFont("helvetica");
-            pdf.setFontSize(10);
             pdf.text(String(pageNum++), pdfWidth/2, pdfHeight-5, {align:"center"});
-
             resolve();
         };
     });
