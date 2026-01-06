@@ -3,273 +3,261 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<title>संलग्न दस्तावेज अपलोड</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>संलग्न दस्तावेज</title>
 
 <style>
-body{
-  font-family:Mangal,Arial;
-  background:#f3f4f6;
-  margin:20px
+:root{
+ --primary:#2563eb;
+ --bg:#f1f5f9;
+ --card:#ffffff;
+ --border:#cbd5e1;
+ --ok:#ecfeff;
 }
+
+body{font-family:Mangal,Arial;background:var(--bg);padding:12px}
+
 .card{
-  background:#fff;
-  padding:15px;
-  border-radius:8px;
-  margin-bottom:15px
+ background:var(--card);
+ padding:12px;
+ border-radius:12px;
+ box-shadow:0 4px 10px rgba(0,0,0,.05);
+ margin-bottom:16px;
 }
-table{
-  width:100%;
-  border-collapse:collapse
-}
-th,td{
-  border:1px solid #000;
-  padding:6px;
-  font-size:14px
-}
-th{background:#eee}
+
+table{width:100%;min-width:720px;border-collapse:collapse}
+th,td{border:1px solid var(--border);padding:8px;font-size:14px}
+th{background:#e5e7eb}
 .center{text-align:center}
 .hidden{display:none}
+.uploaded td{background:var(--ok)}
+.plus{cursor:pointer;color:var(--primary);font-size:18px}
+
 button{
-  padding:10px 20px;
-  font-size:15px;
-  cursor:pointer
+ background:var(--primary);
+ color:#fff;
+ border:none;
+ padding:14px 22px;
+ border-radius:10px;
+ cursor:pointer;
 }
-.plus{
-  font-size:20px;
-  cursor:pointer;
-  font-weight:bold;
-}
-.subRow td{
-  background:#fafafa;
+
+button:disabled{background:#94a3b8;cursor:not-allowed}
+
+@media print{
+ input,button,.plus{display:none}
 }
 </style>
 </head>
 
 <body>
 
-<h2>संलग्न दस्तावेज Only jpg/png</h2>
+<h2 class="center">संलग्न दस्तावेज</h2>
 
 <div class="card">
 <table>
 <thead>
 <tr>
-<th>क्रम</th>
-<th>दस्तावेज</th>
-<th>हाँ</th>
-<th>नहीं</th>
-<th>अपलोड</th>
+<th>क्रम</th><th>दस्तावेज</th><th>हाँ</th><th>नहीं</th><th>अपलोड</th>
 </tr>
 </thead>
 <tbody id="docTable"></tbody>
 </table>
 </div>
 
-<!-- ===== LOCAL RESIDENT ===== -->
+<!-- LOCAL -->
 <div class="card hidden" id="localBox">
-<b>स्थानीय निवासी (कोई 2 अनिवार्य)</b><br><br>
+<b>स्थानीय निवासी (कोई 2 अनिवार्य)</b>
+<div id="localError" style="color:red;display:none">⚠ कम से कम 2 दस्तावेज अपलोड करें</div><br>
 
-<label>
-<input type="checkbox" class="localChk"> मतदाता पहचान पत्र
-<input type="file" class="localFile hidden">
-</label><br><br>
+<label><input type="checkbox" class="localChk"> मतदाता पहचान पत्र
+<input type="file" class="localFile hidden" accept="image/jpeg,image/png"></label><br><br>
 
-<label>
-<input type="checkbox" class="localChk"> राशन कार्ड
-<input type="file" class="localFile hidden">
-</label><br><br>
+<label><input type="checkbox" class="localChk"> राशन कार्ड
+<input type="file" class="localFile hidden" accept="image/jpeg,image/png"></label><br><br>
 
-<label>
-<input type="checkbox" class="localChk"> आधार कार्ड
-<input type="file" class="localFile hidden">
-</label><br><br>
+<label><input type="checkbox" class="localChk"> आधार कार्ड
+<input type="file" class="localFile hidden" accept="image/jpeg,image/png"></label><br><br>
 
-<label>
-<input type="checkbox" class="localChk"> जन आधार कार्ड
-<input type="file" class="localFile hidden">
-</label>
+<label><input type="checkbox" class="localChk"> जन आधार कार्ड
+<input type="file" class="localFile hidden" accept="image/jpeg,image/png"></label>
 </div>
 
 <div class="center">
-<button onclick="generatePDF()">PDF तैयार करें</button>
+<button id="pdfBtn" onclick="generatePDF()">PDF तैयार करें</button>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <script>
 const { jsPDF } = window.jspdf;
+const pdfBtn = document.getElementById("pdfBtn");
+const tbody = document.getElementById("docTable");
 
-const documents = [
- "अधिकतम शैक्षणिक योग्यता सम्बन्धी अंकतालिका/प्रमाण पत्र",
- "NCTE मान्यता प्राप्त द्विवर्षीय NTT/DPSE/Bed/D.EL.Ed",
- "सैकण्डरी की अंकतालिका/प्रमाण पत्र",
- "हायर सैकण्डरी की अंकतालिका/प्रमाण पत्र",
- "स्थानीय निवासी प्रमाण पत्र",
- "अनुसूचित जाति/जनजाति/अल्पसंख्यक प्रमाण पत्र",
- "पिछड़ा वर्ग (OBC) प्रमाण पत्र",
- "EWS प्रमाण पत्र",
- "आदिम व घुमन्तु जाति प्रमाण पत्र",
- "दिव्यांग जन प्रमाण पत्र",
- "GNM/ANM/Nursing प्रमाण पत्र",
- "RSCIT / PGDCA प्रमाण पत्र",
- "आंगनबाडी अनुभव प्रमाण पत्र",
- "NCTE मान्यता प्राप्त NTT/DPSE/AB Ed/E EL Ed",
- "विधवा/तलाकशुदा प्रमाण पत्र",
- "अन्य"
+const docs=[
+"अधिकतम शैक्षणिक योग्यता सम्बन्धी अंकतालिका/प्रमाण पत्र",
+"NCTE मान्यता प्राप्त द्विवर्षीय NTT/DPSE/Bed/D.EL.Ed",
+"सैकण्डरी की अंकतालिका/प्रमाण पत्र",
+"हायर सैकण्डरी की अंकतालिका/प्रमाण पत्र",
+"स्थानीय निवासी प्रमाण पत्र",
+"अनुसूचित जाति/जनजाति/अल्पसंख्यक प्रमाण पत्र",
+"पिछड़ा वर्ग (OBC) प्रमाण पत्र",
+"EWS प्रमाण पत्र",
+"आदिम व घुमन्तु जाति प्रमाण पत्र",
+"दिव्यांग जन प्रमाण पत्र",
+"GNM/ANM/Nursing प्रमाण पत्र",
+"RSCIT / PGDCA प्रमाण पत्र",
+"आंगनबाडी अनुभव प्रमाण पत्र",
+"NCTE मान्यता प्राप्त NTT/DPSE/AB Ed/E EL Ed",
+"विधवा/तलाकशुदा प्रमाण पत्र",
+"अन्य"
 ];
 
-const tbody = document.getElementById("docTable");
-let otherIndex = 0;
-
-documents.forEach((doc,i)=>{
- const isOther = doc === "अन्य";
-
+docs.forEach((d,i)=>{
+ const other=d==="अन्य";
  tbody.insertAdjacentHTML("beforeend",`
- <tr id="row${i}">
-  <td class="center">${i+1}</td>
-
-  <td>
-    ${
-      isOther
-      ? `अन्य, इनके अलावा यदि आप अन्य दस्तावेज़ जोड़ना चाहते हैं
-         <span class="plus" onclick="addOther()"> ➕</span>`
-      : doc
-    }
-  </td>
-
-  <td class="center">
-    ${isOther ? `` :
-      `<input type="radio" name="doc${i}" value="yes"
-        onchange="docYes(${i})">`
-    }
-  </td>
-
-  <td class="center">
-    ${isOther ? `` :
-      `<input type="radio" name="doc${i}" value="no"
-        onchange="docNo(${i})">`
-    }
-  </td>
-
-  <td>
-    ${isOther ? `` :
-      `<input type="file" id="file${i}" class="hidden">`
-    }
-  </td>
- </tr>
- `);
+<tr id="row${i}">
+<td>${i+1}</td>
+<td>${other?`अन्य <span class="plus" onclick="addOther()">➕</span>`:d}</td>
+<td>${other?"":`<input type="radio" name="doc${i}" onchange="docYes(${i})">`}</td>
+<td>${other?"":`<input type="radio" name="doc${i}" onchange="docNo(${i})">`}</td>
+<td>${other?"":`<input type="file" id="file${i}" class="hidden" accept="image/jpeg,image/png">`}</td>
+</tr>`);
 });
 
-/* YES / NO */
-function docYes(i){
- if(i===4){
-  document.getElementById("localBox").classList.remove("hidden");
- }else{
-  document.getElementById("file"+i).classList.remove("hidden");
- }
-}
-function docNo(i){
- if(i===4){
-  document.getElementById("localBox").classList.add("hidden");
- }else{
-  document.getElementById("file"+i).classList.add("hidden");
-  document.getElementById("file"+i).value="";
- }
-}
-
-/* ===== ADD OTHER SUB DOCUMENT ===== */
-function addOther(){
- const name = prompt("जिस दस्तावेज़ को जोड़ना चाहते हैं उसका नाम लिखें");
- if(!name) return;
-
- const id = `other_${otherIndex++}`;
- document.getElementById("row15").insertAdjacentHTML("afterend",`
- <tr class="subRow">
-  <td></td>
-  <td>${name}</td>
-  <td class="center">
-    <input type="radio" name="${id}" value="yes" onchange="toggleFile('${id}',true)">
-  </td>
-  <td class="center">
-    <input type="radio" name="${id}" value="no" onchange="toggleFile('${id}',false)">
-  </td>
-  <td>
-    <input type="file" id="file_${id}" class="hidden">
-  </td>
- </tr>
- `);
-}
-
-function toggleFile(id,show){
- const f = document.getElementById("file_"+id);
- f.classList.toggle("hidden",!show);
- if(!show) f.value="";
-}
-
-/* ===== LOCAL LOGIC ===== */
-const localChk=document.querySelectorAll(".localChk");
-const localFile=document.querySelectorAll(".localFile");
+/* ===== LOCAL ===== */
+const localChk = [...document.querySelectorAll(".localChk")];
+const localFile = [...document.querySelectorAll(".localFile")];
 
 localChk.forEach((c,i)=>{
  c.onchange=()=>{
-  const sel=[...localChk].filter(x=>x.checked);
-  if(sel.length>4){
-   c.checked=false;
-   alert("");
-   return;
-  }
   localFile[i].classList.toggle("hidden",!c.checked);
+  if(!c.checked) localFile[i].value="";
+  validateLocal();
  };
 });
 
-/* ===== PDF ===== */
+function validateLocal(){
+ const files = localFile.filter(f=>f.files.length>0);
+ localError.style.display = files.length<2?"block":"none";
+ pdfBtn.disabled = files.length<2;
+}
+
+/* ===== DOC ===== */
+function docYes(i){
+ if(i===4){localBox.classList.remove("hidden");return;}
+ const f=document.getElementById("file"+i);
+ f.classList.remove("hidden");
+ f.click();
+}
+
+function docNo(i){
+ if(i===4){localBox.classList.add("hidden");return;}
+ const f=document.getElementById("file"+i);
+ f.value=""; f.classList.add("hidden");
+ document.getElementById("row"+i).classList.remove("uploaded");
+}
+
+document.addEventListener("change",e=>{
+ if(e.target.type==="file"){
+  e.target.closest("tr")?.classList.add("uploaded");
+ }
+});
+
+/* ===== OTHER ===== */
+let otherCount=0;
+function addOther(){
+ const name=prompt("दस्तावेज़ का नाम लिखें");
+ if(!name) return;
+
+ otherCount++;
+ tbody.insertAdjacentHTML("beforeend",`
+<tr class="uploaded">
+<td>16.${otherCount}</td>
+<td>${name}</td>
+<td><input type="radio" checked></td>
+<td></td>
+<td><input type="file" accept="image/jpeg,image/png"></td>
+</tr>`);
+}
+
+/* ===== HIGH-QUALITY PDF ===== */
 async function generatePDF(){
- const pdf=new jsPDF();
- let page=1;
+ let errors = [];
 
- // main docs
- for(let i=0;i<documents.length;i++){
-  if(i===4){
-   const sel=[];
-   localChk.forEach((c,idx)=>{
-    if(c.checked && localFile[idx].files[0])
-     sel.push(localFile[idx].files[0]);
-   });
-   if(sel.length!==2){alert("स्थानीय निवासी के 2 दस्तावेज अनिवार्य");return;}
-   for(const f of sel) await add(pdf,f,page++);
-   continue;
-  }
-
-  const yes=document.querySelector(`input[name=doc${i}][value=yes]`);
-  if(yes?.checked){
-   const f=document.getElementById("file"+i).files[0];
-   if(!f){alert("सभी चयनित दस्तावेज अपलोड करें");return;}
-   await add(pdf,f,page++);
-  }
+ // Local resident check
+ const localFiles = localFile.filter(f => f.files.length>0);
+ if(localFiles.length < 2){
+  errors.push("स्थानीय निवासी के 2 दस्तावेज अपलोड करें");
  }
 
- // other docs
- document.querySelectorAll("[id^=file_other_]").forEach(async f=>{
-  if(f.files[0]) await add(pdf,f.files[0],page++);
+ // Main document check
+ docs.forEach((_, i) => {
+  if(i===4 || i===15) return; // skip local + अन्य
+
+  const yes = document.querySelector(`input[name="doc${i}"]:checked`);
+  if(yes && yes.value === "yes"){
+    const f = document.getElementById("file"+i);
+    if(!f || !f.files[0]){
+      errors.push("कुछ चयनित दस्तावेज अपलोड नहीं किए गए हैं");
+    }
+  }
  });
+
+ if(errors.length){
+  alert("कृपया निम्न त्रुटियाँ सुधारें:\n\n" + [...new Set(errors)].join("\n"));
+  return;
+ }
+
+ // Start PDF
+ const pdf = new jsPDF({orientation:"p", unit:"mm", format:"a4", compress:false});
+ let pageNum = 1;
+ let first = true;
+
+ const allFiles = [...document.querySelectorAll("input[type=file]")].filter(f=>f.files[0]);
+
+ for(const f of allFiles){
+    const imgData = await readFile(f.files[0]);
+    const img = new Image();
+    img.src = imgData;
+
+    await new Promise(resolve => {
+        img.onload = () => {
+            if(!first) pdf.addPage();
+            first = false;
+
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+
+            // proportional scaling
+            const ratio = Math.min(pdfWidth / img.width, pdfHeight / img.height);
+            const finalWidth = img.width * ratio;
+            const finalHeight = img.height * ratio;
+
+            const x = (pdfWidth - finalWidth)/2;
+            const y = (pdfHeight - finalHeight)/2;
+
+            pdf.addImage(imgData, "JPEG", x, y, finalWidth, finalHeight);
+
+            // page number
+            pdf.setFont("helvetica");
+            pdf.setFontSize(10);
+            pdf.text(String(pageNum++), pdfWidth/2, pdfHeight-5, {align:"center"});
+
+            resolve();
+        };
+    });
+ }
 
  pdf.save("documents.pdf");
-}
 
-async function add(pdf,file,page){
- const img=await read(file);
- pdf.addImage(img,"JPEG",10,10,190,260);
- pdf.text(`Page No. ${page}`,105,290,{align:"center"});
- pdf.addPage();
-}
-
-function read(f){
- return new Promise(r=>{
-  const fr=new FileReader();
-  fr.onload=e=>r(e.target.result);
-  fr.readAsDataURL(f);
- });
+ function readFile(file){
+   return new Promise(r=>{
+      const reader = new FileReader();
+      reader.onload = e=>r(e.target.result);
+      reader.readAsDataURL(file);
+   });
+ }
 }
 </script>
-
 </body>
 </html>
