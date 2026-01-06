@@ -68,7 +68,7 @@ button:disabled{background:#94a3b8;cursor:not-allowed}
 <!-- LOCAL -->
 <div class="card hidden" id="localBox">
 <b>स्थानीय निवासी (कोई 2 अनिवार्य)</b>
-<div id="localError" style="color:red;display:none">⚠ कम से कम 2 दस्तावेज अपलोड करें</div><br>
+<div id="localError" style="color:red;display:none">⚠ दस्तावेज अपलोड करें</div><br>
 
 <label><input type="checkbox" class="localChk"> मतदाता पहचान पत्र
 <input type="file" class="localFile hidden" accept="image/jpeg,image/png"></label><br><br>
@@ -186,8 +186,8 @@ async function generatePDF(){
 
  // Local resident check
  const localFiles = localFile.filter(f => f.files.length>0);
- if(localFiles.length < 2){
-  errors.push("स्थानीय निवासी के 2 दस्तावेज अपलोड करें");
+ if(localFiles.length < 1){
+  errors.push("स्थानीय निवासी के 1 दस्तावेज अपलोड करें");
  }
 
  // Main document check
