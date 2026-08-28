@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Surprise ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Georgia", serif;
+    background:
+        radial-gradient(circle at 50% 40%, #4b1638 0%, #210d27 45%, #080512 100%);
+    color: white;
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background-glow {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .35;
+}
+
+.glow.one {
+    width: 300px;
+    height: 300px;
+    background: #ff4d8d;
+    top: -100px;
+    left: -80px;
+}
+
+.glow.two {
+    width: 350px;
+    height: 350px;
+    background: #ffb347;
+    bottom: -150px;
+    right: -100px;
+}
+
+.glow.three {
+    width: 250px;
+    height: 250px;
+    background: #a855f7;
+    top: 40%;
+    left: 45%;
+}
+
+/* =========================================
+   FLOATING PARTICLES
+========================================= */
+
+.particle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: #ffd6e7;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #fff;
+    animation: floatParticle linear infinite;
+    opacity: .8;
+}
+
+@keyframes floatParticle {
+
+    from {
+        transform: translateY(110vh) scale(.5);
+    }
+
+    to {
+        transform: translateY(-10vh) scale(1.4);
+    }
+
+}
+
+/* =========================================
+   SURPRISE SCREEN
+========================================= */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(102, 25, 74, .98),
+        rgba(15, 5, 20, 1));
+
+    transition: opacity 1.2s ease,
+                transform 1.2s ease;
+}
+
+.intro-content {
+    width: min(90%, 600px);
+    padding: 30px;
+}
+
+.small-text {
+    letter-spacing: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    opacity: .7;
+    margin-bottom: 20px;
+}
+
+.intro-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin: 0;
+    line-height: 1.05;
+
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #ffd1e5,
+        #ffc36b,
+        #fff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    background-size: 300%;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+
+}
+
+.intro-subtitle {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    opacity: .75;
+    font-style: italic;
+}
+
+/* =========================================
+   SURPRISE BUTTON
+========================================= */
+
+.open-btn {
+
+    margin-top: 40px;
+
+    padding: 17px 35px;
+
+    border: 1px solid rgba(255,255,255,.4);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.2),
+            rgba(255,255,255,.05)
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 0 30px rgba(255,100,170,.3),
+        inset 0 0 20px rgba(255,255,255,.05);
+
+    transition: .4s;
+}
+
+.open-btn:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 50px rgba(255,100,170,.7),
+        inset 0 0 25px rgba(255,255,255,.15);
+
+}
+
+.open-btn:active {
+    transform: scale(.95);
+}
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+#main {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: scale(.8);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s cubic-bezier(.2,.8,.2,1);
+
+}
+
+#main.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.main-title {
+
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+
+    margin: 0 0 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffd1e7,
+            #ffc66d,
+            #fff
+        );
+
+    background-size: 250%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: shine 5s linear infinite;
+
+    text-shadow:
+        0 0 30px rgba(255,150,190,.25);
+
+}
+
+.subtitle {
+
+    margin: 0 0 25px;
+
+    opacity: .7;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+/* =========================================
+   PHOTO AREA
+========================================= */
+
+.photo-wrapper {
+
+    position: relative;
+
+    perspective: 1000px;
+
+}
+
+/* glowing aura */
+
+.photo-wrapper::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -35px;
+
+    border-radius: 35px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,110,170,.35),
+            transparent 65%
+        );
+
+    filter: blur(15px);
+
+    animation: aura 3s ease-in-out infinite;
+
+}
+
+@keyframes aura {
+
+    0%,100% {
+        transform: scale(.9);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: .9;
+    }
+
+}
+
+/* =========================================
+   PHOTO FRAME
+========================================= */
+
+.gallery-container {
+
+    position: relative;
+
+    width: min(70vw, 330px);
+    height: min(55vh, 430px);
+
+    padding: 10px;
+
+    background: #fff;
+
+    border-radius: 6px;
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.7),
+
+        0 0 50px rgba(255,100,160,.3);
+
+    transform:
+        rotate(-2deg)
+        translateZ(0);
+
+    animation:
+        photoFloat 4s ease-in-out infinite;
+
+    z-index: 5;
+
+}
+
+@keyframes photoFloat {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(2deg);
+    }
+
+}
+
+.gallery-container::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 6px;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 0 0 2px rgba(180,100,120,.2);
+
+}
+
+.gallery-container img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+/* =========================================
+   RAKHI DECORATION
+========================================= */
+
+.rakhi {
+
+    position: absolute;
+
+    width: 95px;
+    height: 95px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 45px;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffd36b 0%,
+            #ff9d32 40%,
+            #a83264 70%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 25px rgba(255,190,80,.8),
+        0 0 70px rgba(255,100,150,.4);
+
+    z-index: 10;
+
+    animation:
+        rakhiPulse 2.5s ease-in-out infinite;
+
+}
+
+.rakhi.left {
+
+    left: -65px;
+    top: 40%;
+
+    transform: rotate(-15deg);
+
+}
+
+.rakhi.right {
+
+    right: -65px;
+    top: 40%;
+
+    transform: rotate(15deg);
+
+}
+
+@keyframes rakhiPulse {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+}
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+
+    margin-top: 30px;
+
+    font-size: clamp(1rem, 3vw, 1.3rem);
+
+    max-width: 500px;
+
+    padding: 0 20px;
+
+    line-height: 1.6;
+
+    opacity: .9;
+
+}
+
+.message span {
+
+    color: #ffd071;
+
+}
+
+/* =========================================
+   MUSIC
+========================================= */
+
+.music {
+
+    position: fixed;
+
+    bottom: 20px;
+
+    right: 20px;
+
+    z-index: 20;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.3);
+
+    background: rgba(255,255,255,.1);
+
+    backdrop-filter: blur(10px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+}
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+.confetti {
+
+    position: fixed;
+
+    width: 8px;
+    height: 14px;
+
+    z-index: 200;
+
+    pointer-events: none;
+
+    animation:
+        confettiFall 2.5s ease-out forwards;
+
+}
+
+@keyframes confettiFall {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            rotate(0);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(720deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+/* =========================================
+   HEARTS
+========================================= */
+
+.heart {
+
+    position: fixed;
+
+    bottom: -30px;
+
+    font-size: 18px;
+
+    pointer-events: none;
+
+    animation:
+        heartFloat 5s linear forwards;
+
+    opacity: .8;
+
+    z-index: 3;
+
+}
+
+@keyframes heartFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(.5)
+            rotate(0);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            scale(1.3)
+            rotate(30deg);
+
+        opacity: 0;
+    }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .gallery-container {
+
+        width: 72vw;
+        height: 52vh;
+
+    }
+
+    .rakhi {
+
+        width: 65px;
+        height: 65px;
+
+        font-size: 30px;
+
+    }
+
+    .rakhi.left {
+        left: -35px;
+    }
+
+    .rakhi.right {
+        right: -35px;
+    }
+
+    .message {
+        font-size: 15px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     BACKGROUND
+========================================= -->
+
+<div class="background-glow">
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+    <div class="glow three"></div>
+
+</div>
+
+
+<!-- =========================================
+     INTRO / SURPRISE SCREEN
+========================================= -->
+
+<section id="intro">
+
+    <div class="intro-content">
+
+        <div class="small-text">
+            A little something for you
+        </div>
+
+        <h1 class="intro-title">
+            Hey Sis... ❤️
+        </h1>
+
+        <p class="intro-subtitle">
+            I made something special for you.
+        </p>
+
+        <button
+            class="open-btn"
+            onclick="openSurprise()"
+        >
+            ✨ Open Your Surprise ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     MAIN SURPRISE
+========================================= -->
+
+<main id="main">
+
+    <h1 class="main-title">
+        Happy Raksha Bandhan ❤️
+    </h1>
+
+    <p class="subtitle">
+        For the most special sister
+    </p>
+
+
+    <div class="photo-wrapper">
+
+        <div class="gallery-container">
+
+            <img
+                id="shuffling-image"
+                src="images-j/1.jpeg"
+                alt="Our memories"
+            >
+
+        </div>
+
+
+        <!-- Decorative Rakhi -->
+
+        <div class="rakhi left">
+            🪷
+        </div>
+
+        <div class="rakhi right">
+            🪷
+        </div>
+
+    </div>
+
+
+    <div class="message">
+
+        Some memories fade...
+
+        <span>
+            but the ones we make together never do. ❤️
+        </span>
+
+    </div>
+
+</main>
+
+
+<!-- MUSIC BUTTON -->
+
+<div
+    class="music"
+    onclick="toggleMusic()"
+    id="musicButton"
+>
+    🎵
+</div>
+
+
+<audio
+    id="bg-music"
+    src="rakhi-song.mp3"
+    loop
+>
+</audio>
+
+
+<script>
+
+/* =========================================
+   YOUR PHOTOS
+========================================= */
+
+const imageList = [
+
+    "images-j/1.jpeg",
+    "images-j/2.jpeg",
+    "images-j/3.jpeg",
+    "images-j/4.jpeg"
+
+];
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const intro =
+    document.getElementById("intro");
+
+const main =
+    document.getElementById("main");
+
+const music =
+    document.getElementById("bg-music");
+
+const image =
+    document.getElementById("shuffling-image");
+
+
+/* =========================================
+   OPEN SURPRISE
+========================================= */
+
+function openSurprise() {
+
+    /* fade intro away */
+
+    intro.style.opacity = "0";
+
+    intro.style.transform =
+        "scale(1.2)";
+
+    setTimeout(() => {
+
+        intro.style.display = "none";
+
+        main.classList.add("show");
+
+    }, 900);
+
+
+    /* start music */
+
+    music.volume = 0.7;
+
+    music.play().catch(() => {});
+
+
+    /* dramatic effect */
+
+    createConfetti();
+
+    setTimeout(createConfetti, 500);
+
+    setTimeout(createConfetti, 1000);
+
+
+    /* start floating hearts */
+
+    setInterval(createHeart, 900);
+
+}
+
+
+/* =========================================
+   IMAGE SLIDESHOW
+========================================= */
+
+let currentIndex = 0;
+
+function changeImage() {
+
+    image.style.opacity = "0";
+
+    image.style.transform =
+        "scale(1.08)";
+
+    setTimeout(() => {
+
+        currentIndex =
+            (currentIndex + 1)
+            % imageList.length;
+
+        image.src =
+            imageList[currentIndex];
+
+        image.style.opacity = "1";
+
+        image.style.transform =
+            "scale(1)";
+
+    }, 700);
+
+}
+
+
+/* Change image every 4 seconds */
+
+setInterval(changeImage, 4000);
+
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+function createConfetti() {
+
+    const pieces = 90;
+
+    for(let i = 0; i < pieces; i++) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className =
+            "confetti";
+
+        piece.style.left =
+            "50%";
+
+        piece.style.top =
+            "45%";
+
+        piece.style.background =
+            [
+                "#ff5f8f",
+                "#ffd166",
+                "#ffffff",
+                "#c77dff",
+                "#ff9f43"
+            ][
+                Math.floor(
+                    Math.random() * 5
+                )
+            ];
+
+        piece.style.setProperty(
+            "--x",
+            `${(Math.random() - .5) * 100}vw`
+        );
+
+        piece.style.setProperty(
+            "--y",
+            `${Math.random() * 100 - 20}vh`
+        );
+
+        piece.style.transform =
+            `rotate(${Math.random()*360}deg)`;
+
+        document.body.appendChild(piece);
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        }, 3000);
+
+    }
+
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "heart";
+
+    heart.innerHTML =
+        Math.random() > .5
+        ? "❤️"
+        : "✨";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 8000);
+
+}
+
+
+/* =========================================
+   BACKGROUND PARTICLES
+========================================= */
+
+function createParticles() {
+
+    for(let i = 0; i < 35; i++) {
+
+        const particle =
+            document.createElement("div");
+
+        particle.className =
+            "particle";
+
+        particle.style.left =
+            Math.random() * 100 + "vw";
+
+        particle.style.animationDuration =
+            (5 + Math.random() * 10) + "s";
+
+        particle.style.animationDelay =
+            Math.random() * 8 + "s";
+
+        particle.style.opacity =
+            .2 + Math.random() * .8;
+
+        document.body.appendChild(
+            particle
+        );
+
+    }
+
+}
+
+createParticles();
+
+
+/* =========================================
+   MUSIC TOGGLE
+========================================= */
+
+function toggleMusic() {
+
+    if(music.paused) {
+
+        music.play();
+
+        document.getElementById(
+            "musicButton"
+        ).innerHTML = "🎵";
+
+    } else {
+
+        music.pause();
+
+        document.getElementById(
+            "musicButton"
+        ).innerHTML = "🔇";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
